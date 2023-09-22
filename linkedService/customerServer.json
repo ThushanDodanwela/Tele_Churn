@@ -1,0 +1,12 @@
+{
+	"name": "customerServer",
+	"properties": {
+		"annotations": [],
+		"type": "HttpServer",
+		"typeProperties": {
+			"url": "https://raw.githubusercontent.com/ThushanDodanwela/Tele_Churn/master/customer.csv",
+			"enableServerCertificateValidation": true,
+			"authenticationType": "Anonymous"
+		}
+	}
+}
