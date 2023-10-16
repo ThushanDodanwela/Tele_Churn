@@ -1,1 +1,5 @@
 Voice_Plan_ID,Voice_Plan_Name,Monthly_Charge,IDD_Service
+V001,Booster,529,No
+V002,Oneshot,989,Yes
+V003,TripleMax,1299,Yes
+V004,Unlimited,2199,Yes

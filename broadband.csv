@@ -1,1 +1,7 @@
-Broadband_Plan_ID,Broadband_Plan_Name,Data_Allowance,Online Security,Online Backup,Unlimited Data,Monthly_Charge
+Broadband_Plan_ID,Broadband_Plan_Name,Data_Allowance,Online Security,Online Backup,Monthly_Charge
+B001,Starter,13,No,No,989
+B002,Pal,25,No,No,1225
+B003,Family,40,No,No,1760
+B004,Master,75,No,No,2300
+B005,Champ,155,Yes,Yes,3480
+B006,Life,250,Yes,Yes,5400
