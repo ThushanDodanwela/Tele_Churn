@@ -1,0 +1,12 @@
+{
+	"name": "streamingServer",
+	"properties": {
+		"annotations": [],
+		"type": "HttpServer",
+		"typeProperties": {
+			"url": "https://raw.githubusercontent.com/ThushanDodanwela/Tele_Churn/master/streaming.csv",
+			"enableServerCertificateValidation": true,
+			"authenticationType": "Anonymous"
+		}
+	}
+}

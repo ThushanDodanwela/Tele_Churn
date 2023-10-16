@@ -1,0 +1,12 @@
+{
+	"name": "broadbandServer",
+	"properties": {
+		"annotations": [],
+		"type": "HttpServer",
+		"typeProperties": {
+			"url": "https://raw.githubusercontent.com/ThushanDodanwela/Tele_Churn/master/broadband.csv",
+			"enableServerCertificateValidation": true,
+			"authenticationType": "Anonymous"
+		}
+	}
+}

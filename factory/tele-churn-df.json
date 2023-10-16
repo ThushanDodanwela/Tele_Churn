@@ -1,0 +1,9 @@
+{
+	"name": "tele-churn-df",
+	"location": "southeastasia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "76c63858-d538-4625-937d-1af5ffc799da",
+		"tenantId": "aa232db2-7a78-4414-a529-33db9124cba7"
+	}
+}
