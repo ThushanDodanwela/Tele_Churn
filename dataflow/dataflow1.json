@@ -12,7 +12,11 @@
 					"name": "teleData"
 				}
 			],
-			"sinks": [],
+			"sinks": [
+				{
+					"name": "DWSink"
+				}
+			],
 			"transformations": [],
 			"scriptLines": [
 				"source(output(",
@@ -21,7 +25,11 @@
 				"     ),",
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
-				"     ignoreNoFilesFound: false) ~> teleData"
+				"     ignoreNoFilesFound: false) ~> teleData",
+				"teleData sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> DWSink"
 			]
 		}
 	}
