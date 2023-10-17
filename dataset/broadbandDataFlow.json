@@ -1,0 +1,49 @@
+{
+	"name": "broadbandDataFlow",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureDataLakeStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "broadband.csv",
+				"folderPath": "raw-data",
+				"fileSystem": "churn-stg-data"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "Broadband_Plan_ID",
+				"type": "String"
+			},
+			{
+				"name": "Broadband_Plan_Name",
+				"type": "String"
+			},
+			{
+				"name": "Data_Allowance",
+				"type": "String"
+			},
+			{
+				"name": "Online Security",
+				"type": "String"
+			},
+			{
+				"name": "Online Backup",
+				"type": "String"
+			},
+			{
+				"name": "Monthly_Charge",
+				"type": "String"
+			}
+		]
+	}
+}

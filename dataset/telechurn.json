@@ -1,0 +1,22 @@
+{
+	"name": "telechurn",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "teleChurnHTTP",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "HttpServerLocation",
+				"relativeUrl": "https://raw.githubusercontent.com/ThushanDodanwela/Tele_Churn/master/Tele_Churn.csv"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
