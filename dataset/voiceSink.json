@@ -12,7 +12,7 @@
 				"type": "AzureBlobFSLocation",
 				"fileName": "voice.csv",
 				"folderPath": "raw-data",
-				"fileSystem": "tele-churn-data"
+				"fileSystem": "churn-stg-data"
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",
