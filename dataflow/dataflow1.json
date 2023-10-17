@@ -24,7 +24,7 @@
 			"transformations": [],
 			"scriptLines": [
 				"source(output(",
-				"          Broadband_Plan_ID as string,",
+				"          Broadband_Plan_ID as integer,",
 				"          Broadband_Plan_Name as string,",
 				"          Data_Allowance as string,",
 				"          {Online Security} as string,",
