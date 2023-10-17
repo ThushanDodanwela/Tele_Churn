@@ -470,7 +470,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "telechurnSource",
+						"referenceName": "Churnsource",
 						"type": "DatasetReference"
 					}
 				]
