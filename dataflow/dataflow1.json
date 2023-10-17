@@ -5,49 +5,14 @@
 		"typeProperties": {
 			"sources": [
 				{
-					"dataset": {
-						"referenceName": "broadbandDataFlow",
-						"type": "DatasetReference"
-					},
-					"name": "broadband"
-				},
-				{
-					"dataset": {
-						"referenceName": "CustomerDataFlow",
-						"type": "DatasetReference"
-					},
-					"name": "customer"
+					"name": "source1"
 				}
 			],
 			"sinks": [],
 			"transformations": [],
 			"scriptLines": [
-				"source(output(",
-				"          Broadband_Plan_ID as string,",
-				"          Broadband_Plan_Name as string,",
-				"          Data_Allowance as string,",
-				"          {Online Security} as string,",
-				"          {Online Backup} as string,",
-				"          Monthly_Charge as string",
-				"     ),",
-				"     allowSchemaDrift: true,",
-				"     validateSchema: false,",
-				"     ignoreNoFilesFound: false) ~> broadband",
-				"source(output(",
-				"          {Customer ID} as string,",
-				"          Gender as string,",
-				"          Age as string,",
-				"          Married as string,",
-				"          {Number of Dependents} as string,",
-				"          City as string,",
-				"          {Zip Code} as string,",
-				"          {Number of Referrals} as string,",
-				"          {Multiple Lines8} as string,",
-				"          {Multiple Lines9} as string",
-				"     ),",
-				"     allowSchemaDrift: true,",
-				"     validateSchema: false,",
-				"     ignoreNoFilesFound: false) ~> customer"
+				"source(allowSchemaDrift: true,",
+				"     validateSchema: false) ~> source1"
 			]
 		}
 	}
