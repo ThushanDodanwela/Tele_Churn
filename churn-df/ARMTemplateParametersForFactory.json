@@ -1,0 +1,54 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "churn-df"
+		},
+		"AzureDataLakeStorage1_accountKey": {
+			"value": ""
+		},
+		"AzureSqlDatabase1_connectionString": {
+			"value": ""
+		},
+		"AzureSqlDatabase2_connectionString": {
+			"value": ""
+		},
+		"AzureDataLakeStorage1_properties_typeProperties_url": {
+			"value": "https://churnstorageacc.dfs.core.windows.net/"
+		},
+		"TeleChurnHTTP2_properties_typeProperties_url": {
+			"value": "https://raw.githubusercontent.com/ThushanDodanwela/Tele_Churn/master/Tele_Churn.csv"
+		},
+		"billingServer_properties_typeProperties_url": {
+			"value": "https://raw.githubusercontent.com/ThushanDodanwela/Tele_Churn/master/billing.csv"
+		},
+		"broadbandServer_properties_typeProperties_url": {
+			"value": "https://raw.githubusercontent.com/ThushanDodanwela/Tele_Churn/master/broadband.csv"
+		},
+		"churnHTTP_properties_typeProperties_url": {
+			"value": "https://raw.githubusercontent.com/ThushanDodanwela/Tele_Churn/master/Tele_Churn.csv"
+		},
+		"churnServer_properties_typeProperties_url": {
+			"value": "https://raw.githubusercontent.com/ThushanDodanwela/Tele_Churn/master/churn.csv"
+		},
+		"customerServer_properties_typeProperties_url": {
+			"value": "https://raw.githubusercontent.com/ThushanDodanwela/Tele_Churn/master/customer.csv"
+		},
+		"dateServer_properties_typeProperties_url": {
+			"value": "https://raw.githubusercontent.com/ThushanDodanwela/Tele_Churn/master/date.csv"
+		},
+		"servicelineServer_properties_typeProperties_url": {
+			"value": "https://raw.githubusercontent.com/ThushanDodanwela/Tele_Churn/master/service_line.csv"
+		},
+		"streamingServer_properties_typeProperties_url": {
+			"value": "https://raw.githubusercontent.com/ThushanDodanwela/Tele_Churn/master/streaming.csv"
+		},
+		"teleChurnHTTP_properties_typeProperties_url": {
+			"value": "https://raw.githubusercontent.com/ThushanDodanwela/Tele_Churn/master/Tele_Churn.csv"
+		},
+		"voiceServer_properties_typeProperties_url": {
+			"value": "https://raw.githubusercontent.com/ThushanDodanwela/Tele_Churn/master/voice.csv"
+		}
+	}
+}

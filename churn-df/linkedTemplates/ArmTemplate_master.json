@@ -1,0 +1,187 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "churn-df"
+		},
+		"AzureDataLakeStorage1_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'AzureDataLakeStorage1'"
+		},
+		"AzureSqlDatabase1_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureSqlDatabase1'"
+		},
+		"AzureSqlDatabase2_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureSqlDatabase2'"
+		},
+		"AzureDataLakeStorage1_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://churnstorageacc.dfs.core.windows.net/"
+		},
+		"TeleChurnHTTP2_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://raw.githubusercontent.com/ThushanDodanwela/Tele_Churn/master/Tele_Churn.csv"
+		},
+		"billingServer_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://raw.githubusercontent.com/ThushanDodanwela/Tele_Churn/master/billing.csv"
+		},
+		"broadbandServer_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://raw.githubusercontent.com/ThushanDodanwela/Tele_Churn/master/broadband.csv"
+		},
+		"churnHTTP_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://raw.githubusercontent.com/ThushanDodanwela/Tele_Churn/master/Tele_Churn.csv"
+		},
+		"churnServer_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://raw.githubusercontent.com/ThushanDodanwela/Tele_Churn/master/churn.csv"
+		},
+		"customerServer_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://raw.githubusercontent.com/ThushanDodanwela/Tele_Churn/master/customer.csv"
+		},
+		"dateServer_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://raw.githubusercontent.com/ThushanDodanwela/Tele_Churn/master/date.csv"
+		},
+		"servicelineServer_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://raw.githubusercontent.com/ThushanDodanwela/Tele_Churn/master/service_line.csv"
+		},
+		"streamingServer_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://raw.githubusercontent.com/ThushanDodanwela/Tele_Churn/master/streaming.csv"
+		},
+		"teleChurnHTTP_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://raw.githubusercontent.com/ThushanDodanwela/Tele_Churn/master/Tele_Churn.csv"
+		},
+		"voiceServer_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://raw.githubusercontent.com/ThushanDodanwela/Tele_Churn/master/voice.csv"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "churn-df_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"AzureDataLakeStorage1_accountKey": {
+						"value": "[parameters('AzureDataLakeStorage1_accountKey')]"
+					},
+					"AzureSqlDatabase1_connectionString": {
+						"value": "[parameters('AzureSqlDatabase1_connectionString')]"
+					},
+					"AzureSqlDatabase2_connectionString": {
+						"value": "[parameters('AzureSqlDatabase2_connectionString')]"
+					},
+					"AzureDataLakeStorage1_properties_typeProperties_url": {
+						"value": "[parameters('AzureDataLakeStorage1_properties_typeProperties_url')]"
+					},
+					"TeleChurnHTTP2_properties_typeProperties_url": {
+						"value": "[parameters('TeleChurnHTTP2_properties_typeProperties_url')]"
+					},
+					"billingServer_properties_typeProperties_url": {
+						"value": "[parameters('billingServer_properties_typeProperties_url')]"
+					},
+					"broadbandServer_properties_typeProperties_url": {
+						"value": "[parameters('broadbandServer_properties_typeProperties_url')]"
+					},
+					"churnHTTP_properties_typeProperties_url": {
+						"value": "[parameters('churnHTTP_properties_typeProperties_url')]"
+					},
+					"churnServer_properties_typeProperties_url": {
+						"value": "[parameters('churnServer_properties_typeProperties_url')]"
+					},
+					"customerServer_properties_typeProperties_url": {
+						"value": "[parameters('customerServer_properties_typeProperties_url')]"
+					},
+					"dateServer_properties_typeProperties_url": {
+						"value": "[parameters('dateServer_properties_typeProperties_url')]"
+					},
+					"servicelineServer_properties_typeProperties_url": {
+						"value": "[parameters('servicelineServer_properties_typeProperties_url')]"
+					},
+					"streamingServer_properties_typeProperties_url": {
+						"value": "[parameters('streamingServer_properties_typeProperties_url')]"
+					},
+					"teleChurnHTTP_properties_typeProperties_url": {
+						"value": "[parameters('teleChurnHTTP_properties_typeProperties_url')]"
+					},
+					"voiceServer_properties_typeProperties_url": {
+						"value": "[parameters('voiceServer_properties_typeProperties_url')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "churn-df_ArmTemplate_1",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_1.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'churn-df_ArmTemplate_0')]"
+			]
+		},
+		{
+			"name": "churn-df_ArmTemplate_2",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_2.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'churn-df_ArmTemplate_1')]"
+			]
+		}
+	]
+}
