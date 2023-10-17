@@ -10,9 +10,8 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": "billing.csv",
 				"folderPath": "raw-data",
-				"fileSystem": "tele-churn-data"
+				"fileSystem": "churn-stg-data"
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",

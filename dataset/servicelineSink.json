@@ -10,9 +10,9 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": "service_line.csv",
+				"fileName": "serviceline.csv",
 				"folderPath": "raw-data",
-				"fileSystem": "tele-churn-data"
+				"fileSystem": "churn-stg-data"
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",
