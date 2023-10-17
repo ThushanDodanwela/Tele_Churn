@@ -53,7 +53,8 @@
 				"     skipDuplicateMapOutputs: true,",
 				"     errorHandlingOption: 'stopOnFirstError',",
 				"     mapColumn(",
-				"          Customer_SK = Customer_ID",
+				"          Customer_SK = Customer_ID,",
+				"          Customer_Name = Churn_label",
 				"     )) ~> DWSink"
 			]
 		}
