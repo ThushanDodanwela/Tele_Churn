@@ -12,7 +12,15 @@
 					"name": "broadband"
 				}
 			],
-			"sinks": [],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "AzureSqlTable2",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
 			"transformations": [],
 			"scriptLines": [
 				"source(output(",
@@ -25,7 +33,25 @@
 				"     ),",
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
-				"     ignoreNoFilesFound: false) ~> broadband"
+				"     ignoreNoFilesFound: false) ~> broadband",
+				"broadband sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          Broadband_SK as integer,",
+				"          Broadband_Plan_Name as string,",
+				"          Data_Allowance as integer,",
+				"          Online_Security as boolean,",
+				"          Online_Backup as boolean,",
+				"          Monthly_Charge as decimal(10,2)",
+				"     ),",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     format: 'table',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     errorHandlingOption: 'stopOnFirstError') ~> sink1"
 			]
 		}
 	}

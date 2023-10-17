@@ -1,0 +1,45 @@
+{
+	"name": "AzureSqlTable2",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabase2",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "Broadband_SK",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Broadband_Plan_Name",
+				"type": "varchar"
+			},
+			{
+				"name": "Data_Allowance",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Online_Security",
+				"type": "bit"
+			},
+			{
+				"name": "Online_Backup",
+				"type": "bit"
+			},
+			{
+				"name": "Monthly_Charge",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 2
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "DIM_Broadband"
+		}
+	}
+}
