@@ -14,6 +14,10 @@
 			],
 			"sinks": [
 				{
+					"dataset": {
+						"referenceName": "AzureSqlTable1",
+						"type": "DatasetReference"
+					},
 					"name": "DWSink"
 				}
 			],
@@ -28,8 +32,29 @@
 				"     ignoreNoFilesFound: false) ~> teleData",
 				"teleData sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
+				"     input(",
+				"          Customer_SK as integer,",
+				"          Customer_Name as string,",
+				"          Gender as string,",
+				"          Age as integer,",
+				"          Married as boolean,",
+				"          Number_of_Dependents as integer,",
+				"          City as string,",
+				"          Zip_Code as string,",
+				"          Number_of_Referrals as integer,",
+				"          Multiple_Lines as boolean",
+				"     ),",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     format: 'table',",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> DWSink"
+				"     skipDuplicateMapOutputs: true,",
+				"     errorHandlingOption: 'stopOnFirstError',",
+				"     mapColumn(",
+				"          Customer_SK = Customer_ID",
+				"     )) ~> DWSink"
 			]
 		}
 	}
