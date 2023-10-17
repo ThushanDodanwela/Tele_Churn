@@ -1,0 +1,12 @@
+{
+	"name": "churnHTTP",
+	"properties": {
+		"annotations": [],
+		"type": "HttpServer",
+		"typeProperties": {
+			"url": "https://raw.githubusercontent.com/ThushanDodanwela/Tele_Churn/master/Tele_Churn.csv",
+			"enableServerCertificateValidation": true,
+			"authenticationType": "Anonymous"
+		}
+	}
+}
