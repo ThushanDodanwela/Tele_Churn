@@ -5,14 +5,19 @@
 		"typeProperties": {
 			"sources": [
 				{
-					"name": "source1"
+					"dataset": {
+						"referenceName": "broadbandd",
+						"type": "DatasetReference"
+					},
+					"name": "broadband"
 				}
 			],
 			"sinks": [],
 			"transformations": [],
 			"scriptLines": [
 				"source(allowSchemaDrift: true,",
-				"     validateSchema: false) ~> source1"
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> broadband"
 			]
 		}
 	}
