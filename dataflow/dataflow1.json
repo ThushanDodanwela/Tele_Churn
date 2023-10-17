@@ -5,57 +5,14 @@
 		"typeProperties": {
 			"sources": [
 				{
-					"dataset": {
-						"referenceName": "churnSource2",
-						"type": "DatasetReference"
-					},
-					"name": "teleData"
+					"name": "source1"
 				}
 			],
-			"sinks": [
-				{
-					"dataset": {
-						"referenceName": "AzureSqlTable1",
-						"type": "DatasetReference"
-					},
-					"name": "DWSink"
-				}
-			],
+			"sinks": [],
 			"transformations": [],
 			"scriptLines": [
-				"source(output(",
-				"          Customer_ID as string,",
-				"          Churn_label as string",
-				"     ),",
-				"     allowSchemaDrift: true,",
-				"     validateSchema: false,",
-				"     ignoreNoFilesFound: false) ~> teleData",
-				"teleData sink(allowSchemaDrift: true,",
-				"     validateSchema: false,",
-				"     input(",
-				"          Customer_SK as integer,",
-				"          Customer_Name as string,",
-				"          Gender as string,",
-				"          Age as integer,",
-				"          Married as boolean,",
-				"          Number_of_Dependents as integer,",
-				"          City as string,",
-				"          Zip_Code as string,",
-				"          Number_of_Referrals as integer,",
-				"          Multiple_Lines as boolean",
-				"     ),",
-				"     deletable:false,",
-				"     insertable:true,",
-				"     updateable:false,",
-				"     upsertable:false,",
-				"     format: 'table',",
-				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true,",
-				"     errorHandlingOption: 'stopOnFirstError',",
-				"     mapColumn(",
-				"          Customer_SK = Customer_ID,",
-				"          Customer_Name = Churn_label",
-				"     )) ~> DWSink"
+				"source(allowSchemaDrift: true,",
+				"     validateSchema: false) ~> source1"
 			]
 		}
 	}
