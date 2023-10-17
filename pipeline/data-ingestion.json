@@ -7,7 +7,7 @@
 				"type": "Copy",
 				"dependsOn": [
 					{
-						"activity": "Tele-Churn",
+						"activity": "TeleChurn",
 						"dependencyConditions": [
 							"Completed"
 						]
@@ -451,7 +451,7 @@
 				]
 			},
 			{
-				"name": "Tele-Churn",
+				"name": "TeleChurn",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
@@ -496,7 +496,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "telechurn",
+						"referenceName": "telechurnSource",
 						"type": "DatasetReference"
 					}
 				],
