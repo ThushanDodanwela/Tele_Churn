@@ -38,7 +38,7 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> broadband",
-				"broadband keyGenerate(output({undefined} as long),",
+				"broadband keyGenerate(output(Broadband_Plan_ID as long),",
 				"     startAt: 1L,",
 				"     stepValue: 1L) ~> surrogateKey1",
 				"surrogateKey1 sink(allowSchemaDrift: true,",
