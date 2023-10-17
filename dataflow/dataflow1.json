@@ -21,11 +21,7 @@
 					"name": "sink1"
 				}
 			],
-			"transformations": [
-				{
-					"name": "surrogateKey1"
-				}
-			],
+			"transformations": [],
 			"scriptLines": [
 				"source(output(",
 				"          Broadband_Plan_ID as string,",
@@ -38,10 +34,7 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> broadband",
-				"broadband keyGenerate(output(Broadband_Plan_ID as long),",
-				"     startAt: 1L,",
-				"     stepValue: 1L) ~> surrogateKey1",
-				"surrogateKey1 sink(allowSchemaDrift: true,",
+				"broadband sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     input(",
 				"          Broadband_SK as integer,",
