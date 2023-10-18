@@ -42,6 +42,10 @@
 					"name": "sink2"
 				},
 				{
+					"dataset": {
+						"referenceName": "AzureSqlTable4",
+						"type": "DatasetReference"
+					},
 					"name": "sink3"
 				}
 			],
@@ -152,8 +156,22 @@
 				"     )) ~> sink2",
 				"surrogateKey3 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
+				"     input(",
+				"          Streaming_SK as integer,",
+				"          Streaming_Plan_Name as string,",
+				"          Monthly_Charge as decimal(10,2)",
+				"     ),",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     format: 'table',",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> sink3"
+				"     skipDuplicateMapOutputs: true,",
+				"     errorHandlingOption: 'stopOnFirstError',",
+				"     mapColumn(",
+				"          Streaming_Plan_Name",
+				"     )) ~> sink3"
 			]
 		}
 	}
