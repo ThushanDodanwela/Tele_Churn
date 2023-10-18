@@ -208,7 +208,7 @@
 				"     startAt: 34869L,",
 				"     stepValue: 67L) ~> surrogateKey5",
 				"surrogateKey5 cast(output(",
-				"          {Service_Line Activation Date} as date 'yyyy/MM/dd'",
+				"          {Service_Line Activation Date} as date 'dd-MM-yyyy'",
 				"     ),",
 				"     errors: true) ~> cast4",
 				"surrogateKey1 sink(allowSchemaDrift: true,",
