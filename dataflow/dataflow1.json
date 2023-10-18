@@ -339,7 +339,7 @@
 				"     upsertable:false,",
 				"     recreate:true,",
 				"     format: 'table',",
-				"     preSQLs:['ALTER TABLE dbo.OtherTable1 DROP CONSTRAINT FK_Customer_SK;\\n'],",
+				"     preSQLs:['ALTER TABLE DIM_Broadband(Broadband_SK) DROP CONSTRAINT FK_Broadband_SK;\\n'],",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
 				"     errorHandlingOption: 'stopOnFirstError',",
