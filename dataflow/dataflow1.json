@@ -453,6 +453,8 @@
 				"     upsertable:false,",
 				"     truncate:true,",
 				"     format: 'table',",
+				"     preSQLs:['ALTER TABLE  DIM_Service_Line\\nDROP CONSTRAINT DIM_Service_Line(Service_Line_SK);'],",
+				"     postSQLs:['ALTER TABLE billing_fact\\nADD CONSTRAINT FK_Service_Line_SK\\nFOREIGN KEY (Service_Line_SK) REFERENCES DIM_Service_Line(Service_Line_SK);'],",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
 				"     errorHandlingOption: 'stopOnFirstError',",
