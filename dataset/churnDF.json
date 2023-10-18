@@ -1,5 +1,5 @@
 {
-	"name": "churnSource2",
+	"name": "churnDF",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "AzureDataLakeStorage1",
@@ -10,7 +10,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": "telechurn.csv",
+				"fileName": "ChurnLabel.csv",
 				"folderPath": "raw-data",
 				"fileSystem": "churn-stg-data"
 			},

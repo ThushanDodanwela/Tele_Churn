@@ -1,0 +1,32 @@
+{
+	"name": "AzureSqlTable4",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabase2",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "Streaming_SK",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Streaming_Plan_Name",
+				"type": "varchar"
+			},
+			{
+				"name": "Monthly_Charge",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 2
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "DIM_Streaming"
+		}
+	}
+}

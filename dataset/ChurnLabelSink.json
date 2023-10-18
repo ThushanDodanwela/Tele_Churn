@@ -1,5 +1,5 @@
 {
-	"name": "churnSource2",
+	"name": "ChurnLabelSink",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "AzureDataLakeStorage1",
@@ -10,7 +10,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": "telechurn.csv",
+				"fileName": "ChurnLabel.csv",
 				"folderPath": "raw-data",
 				"fileSystem": "churn-stg-data"
 			},
@@ -19,15 +19,6 @@
 			"firstRowAsHeader": true,
 			"quoteChar": "\""
 		},
-		"schema": [
-			{
-				"name": "Customer_ID",
-				"type": "String"
-			},
-			{
-				"name": "Churn_label",
-				"type": "String"
-			}
-		]
+		"schema": []
 	}
 }

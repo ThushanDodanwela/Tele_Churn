@@ -1,0 +1,36 @@
+{
+	"name": "AzureSqlTable3",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabase2",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "Voice_Plan_SK",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Voice_Plan_Name",
+				"type": "varchar"
+			},
+			{
+				"name": "Monthly_Charge",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 2
+			},
+			{
+				"name": "IDD_Service",
+				"type": "bit"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "DIM_Voice_Plan"
+		}
+	}
+}
