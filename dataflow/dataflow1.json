@@ -26,6 +26,10 @@
 					"name": "streamline"
 				},
 				{
+					"dataset": {
+						"referenceName": "customerDF",
+						"type": "DatasetReference"
+					},
 					"name": "customer"
 				}
 			],
@@ -67,6 +71,9 @@
 				},
 				{
 					"name": "cast2"
+				},
+				{
+					"name": "surrogateKey4"
 				}
 			],
 			"scriptLines": [
@@ -98,8 +105,21 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> streamline",
-				"source(allowSchemaDrift: true,",
-				"     validateSchema: false) ~> customer",
+				"source(output(",
+				"          {Customer ID} as string,",
+				"          Gender as string,",
+				"          Age as string,",
+				"          Married as string,",
+				"          {Number of Dependents} as string,",
+				"          City as string,",
+				"          {Zip Code} as string,",
+				"          {Number of Referrals} as string,",
+				"          {Multiple Lines8} as string,",
+				"          {Multiple Lines9} as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> customer",
 				"broadband keyGenerate(output(Broadband_SK as long),",
 				"     startAt: 1L,",
 				"     stepValue: 1L) ~> surrogateKey1",
@@ -118,6 +138,9 @@
 				"          Monthly_Charge as integer",
 				"     ),",
 				"     errors: true) ~> cast2",
+				"customer keyGenerate(output(customer_SK as long),",
+				"     startAt: 1L,",
+				"     stepValue: 1L) ~> surrogateKey4",
 				"surrogateKey1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     input(",
