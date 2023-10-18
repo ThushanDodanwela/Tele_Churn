@@ -1,18 +1,15 @@
 {
-	"name": "ADLS",
+	"name": "churnlabel",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "AzureDataLakeStorage1",
+			"referenceName": "churnlabelHHTP",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {
 			"location": {
-				"type": "AzureBlobFSLocation",
-				"fileName": "billing",
-				"folderPath": "raw-data",
-				"fileSystem": "churn-stg-data"
+				"type": "HttpServerLocation"
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",

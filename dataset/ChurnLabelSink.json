@@ -1,5 +1,5 @@
 {
-	"name": "ADLS",
+	"name": "ChurnLabelSink",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "AzureDataLakeStorage1",
@@ -10,7 +10,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": "billing",
+				"fileName": "ChurnLabel.csv",
 				"folderPath": "raw-data",
 				"fileSystem": "churn-stg-data"
 			},
