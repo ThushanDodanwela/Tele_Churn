@@ -93,9 +93,6 @@
 					"name": "cast3"
 				},
 				{
-					"name": "cast4"
-				},
-				{
 					"name": "join1"
 				}
 			],
@@ -179,11 +176,7 @@
 				"          {Multiple Lines8} as boolean",
 				"     ),",
 				"     errors: true) ~> cast3",
-				"churn cast(output(",
-				"          Churn_label as boolean",
-				"     ),",
-				"     errors: true) ~> cast4",
-				"cast4, customer join(Customer_ID == {Customer ID},",
+				"churn, customer join(Customer_ID == {Customer ID},",
 				"     joinType:'inner',",
 				"     matchType:'exact',",
 				"     ignoreSpaces: false,",
