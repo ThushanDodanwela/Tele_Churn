@@ -49,6 +49,14 @@
 			{
 				"name": "Is_Awurudu",
 				"type": "bit"
+			},
+			{
+				"name": "invoice_due_date",
+				"type": "bit"
+			},
+			{
+				"name": "invoice_date",
+				"type": "bit"
 			}
 		],
 		"typeProperties": {

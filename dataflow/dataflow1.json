@@ -433,7 +433,9 @@
 				"          Quarter as integer,",
 				"          Is_Christmas_Day as boolean,",
 				"          Is_Vesak as boolean,",
-				"          Is_Awurudu as boolean",
+				"          Is_Awurudu as boolean,",
+				"          invoice_due_date as boolean,",
+				"          invoice_date as boolean",
 				"     ),",
 				"     deletable:false,",
 				"     insertable:true,",
@@ -449,7 +451,8 @@
 				"          Week,",
 				"          Month,",
 				"          Year,",
-				"          Quarter",
+				"          Quarter,",
+				"          Invoice_Due_Date",
 				"     )) ~> sink6"
 			]
 		}
