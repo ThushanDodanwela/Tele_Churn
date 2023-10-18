@@ -139,6 +139,9 @@
 				},
 				{
 					"name": "join4"
+				},
+				{
+					"name": "join5"
 				}
 			],
 			"scriptLines": [
@@ -302,11 +305,16 @@
 				"     matchType:'exact',",
 				"     ignoreSpaces: false,",
 				"     broadcast: 'auto')~> join3",
-				"cast5, surrogateKey3 join(Streaming_ID == Straming_Plan_ID,",
+				"join5, surrogateKey3 join(Streaming_ID == Straming_Plan_ID,",
 				"     joinType:'inner',",
 				"     matchType:'exact',",
 				"     ignoreSpaces: false,",
 				"     broadcast: 'auto')~> join4",
+				"cast5, surrogateKey4 join(billing@Customer_ID == {Customer ID},",
+				"     joinType:'inner',",
+				"     matchType:'exact',",
+				"     ignoreSpaces: false,",
+				"     broadcast: 'auto')~> join5",
 				"surrogateKey1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     input(",
