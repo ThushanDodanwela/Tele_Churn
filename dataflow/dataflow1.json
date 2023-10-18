@@ -45,13 +45,6 @@
 						"type": "DatasetReference"
 					},
 					"name": "serviceline"
-				},
-				{
-					"dataset": {
-						"referenceName": "dateDF2",
-						"type": "DatasetReference"
-					},
-					"name": "date"
 				}
 			],
 			"sinks": [
@@ -124,6 +117,9 @@
 				},
 				{
 					"name": "TenureinMonths"
+				},
+				{
+					"name": "surrogateKey6"
 				}
 			],
 			"scriptLines": [
@@ -188,23 +184,6 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> serviceline",
-				"source(output(",
-				"          Date_ID as string,",
-				"          Date as string,",
-				"          Year as string,",
-				"          Month as string,",
-				"          Quarter as string,",
-				"          Week as string,",
-				"          Day as string,",
-				"          Is_Awurudu_Month as string,",
-				"          Is_Vesak_Month as string,",
-				"          Is_Christmas_Month as string,",
-				"          Invoice_Due_Date as string,",
-				"          Invoice_Date as string",
-				"     ),",
-				"     allowSchemaDrift: true,",
-				"     validateSchema: false,",
-				"     ignoreNoFilesFound: false) ~> date",
 				"broadband keyGenerate(output(Broadband_SK as long),",
 				"     startAt: 1L,",
 				"     stepValue: 1L) ~> surrogateKey1",
@@ -248,6 +227,9 @@
 				"     ),",
 				"     errors: true) ~> cast4",
 				"surrogateKey5 derive({Tenure in Months} = ceil(monthsBetween(currentDate(), {Service_Line Activation Date},true()))) ~> TenureinMonths",
+				" keyGenerate(output(date_SK as long),",
+				"     startAt: 1L,",
+				"     stepValue: 1L) ~> surrogateKey6",
 				"surrogateKey1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     input(",
