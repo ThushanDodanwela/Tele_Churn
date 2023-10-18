@@ -13,7 +13,7 @@
 				},
 				{
 					"dataset": {
-						"referenceName": "voiceSink",
+						"referenceName": "VoiceDF",
 						"type": "DatasetReference"
 					},
 					"name": "voice"
@@ -41,6 +41,9 @@
 				},
 				{
 					"name": "surrogateKey2"
+				},
+				{
+					"name": "cast1"
 				}
 			],
 			"scriptLines": [
@@ -55,15 +58,26 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> broadband",
-				"source(allowSchemaDrift: true,",
+				"source(output(",
+				"          Voice_Plan_ID as string,",
+				"          Voice_Plan_Name as string,",
+				"          Monthly_Charge as string,",
+				"          IDD_Service as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> voice",
 				"broadband keyGenerate(output(Broadband_SK as long),",
 				"     startAt: 1L,",
 				"     stepValue: 1L) ~> surrogateKey1",
-				"voice keyGenerate(output(Voice_SK as long),",
+				"cast1 keyGenerate(output(Voice_SK as long),",
 				"     startAt: 1L,",
 				"     stepValue: 1L) ~> surrogateKey2",
+				"voice cast(output(",
+				"          Monthly_Charge as integer,",
+				"          IDD_Service as binary",
+				"     ),",
+				"     errors: true) ~> cast1",
 				"surrogateKey1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     input(",
@@ -105,7 +119,13 @@
 				"     format: 'table',",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
-				"     errorHandlingOption: 'stopOnFirstError') ~> sink2"
+				"     errorHandlingOption: 'stopOnFirstError',",
+				"     mapColumn(",
+				"          Voice_Plan_SK = Voice_SK,",
+				"          Voice_Plan_Name,",
+				"          Monthly_Charge,",
+				"          IDD_Service",
+				"     )) ~> sink2"
 			]
 		}
 	}
