@@ -153,6 +153,9 @@
 				},
 				{
 					"name": "join3"
+				},
+				{
+					"name": "join4"
 				}
 			],
 			"scriptLines": [
@@ -327,11 +330,16 @@
 				"     matchType:'exact',",
 				"     ignoreSpaces: false,",
 				"     broadcast: 'auto')~> join2",
-				"join2 join(ERROR_FUNCTION('') == ERROR_FUNCTION(''),",
+				"join2, surrogateKey2 join(billing@Voice_Plan_ID == voice@Voice_Plan_ID,",
 				"     joinType:'inner',",
 				"     matchType:'exact',",
 				"     ignoreSpaces: false,",
 				"     broadcast: 'auto')~> join3",
+				"join3, surrogateKey3 join(Streaming_ID == Straming_Plan_ID,",
+				"     joinType:'inner',",
+				"     matchType:'exact',",
+				"     ignoreSpaces: false,",
+				"     broadcast: 'auto')~> join4",
 				"surrogateKey1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     input(",
