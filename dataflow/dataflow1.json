@@ -38,6 +38,13 @@
 						"type": "DatasetReference"
 					},
 					"name": "churn"
+				},
+				{
+					"dataset": {
+						"referenceName": "servicelineDF",
+						"type": "DatasetReference"
+					},
+					"name": "serviceline"
 				}
 			],
 			"sinks": [
@@ -94,6 +101,9 @@
 				},
 				{
 					"name": "join1"
+				},
+				{
+					"name": "surrogateKey5"
 				}
 			],
 			"scriptLines": [
@@ -147,6 +157,17 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> churn",
+				"source(output(",
+				"          Customer_ID as string,",
+				"          {Service_Line Activation Date} as string,",
+				"          Offer as string,",
+				"          Contract as string,",
+				"          Premimum_Tech_Support as string,",
+				"          Prop_5 as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> serviceline",
 				"broadband keyGenerate(output(Broadband_SK as long),",
 				"     startAt: 1L,",
 				"     stepValue: 1L) ~> surrogateKey1",
@@ -181,6 +202,9 @@
 				"     matchType:'exact',",
 				"     ignoreSpaces: false,",
 				"     broadcast: 'auto')~> join1",
+				"serviceline keyGenerate(output({undefined} as long),",
+				"     startAt: 1L,",
+				"     stepValue: 1L) ~> surrogateKey5",
 				"surrogateKey1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     input(",
