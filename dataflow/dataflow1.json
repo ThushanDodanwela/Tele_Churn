@@ -127,6 +127,9 @@
 				},
 				{
 					"name": "surrogateKey6"
+				},
+				{
+					"name": "cast5"
 				}
 			],
 			"scriptLines": [
@@ -262,6 +265,12 @@
 				"billing keyGenerate(output(billing_SK as long),",
 				"     startAt: 846293L,",
 				"     stepValue: 62L) ~> surrogateKey6",
+				"surrogateKey6 cast(output(",
+				"          Customer_ID as integer,",
+				"          Voice_Plan_ID as integer,",
+				"          Broadband_Plan_Id as string",
+				"     ),",
+				"     errors: true) ~> cast5",
 				"surrogateKey1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     input(",
