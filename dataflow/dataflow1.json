@@ -138,7 +138,7 @@
 				"     stepValue: 1L) ~> surrogateKey2",
 				"voice cast(output(",
 				"          Monthly_Charge as integer,",
-				"          IDD_Service as binary",
+				"          IDD_Service as boolean",
 				"     ),",
 				"     errors: true) ~> cast1",
 				"cast2 keyGenerate(output(streamline_SK as long),",
