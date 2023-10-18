@@ -26,11 +26,17 @@
 						"type": "DatasetReference"
 					},
 					"name": "sink1"
+				},
+				{
+					"name": "sink2"
 				}
 			],
 			"transformations": [
 				{
 					"name": "surrogateKey1"
+				},
+				{
+					"name": "surrogateKey2"
 				}
 			],
 			"scriptLines": [
@@ -51,6 +57,9 @@
 				"broadband keyGenerate(output(Broadband_SK as long),",
 				"     startAt: 1L,",
 				"     stepValue: 1L) ~> surrogateKey1",
+				"voice keyGenerate(output(Voice_SK as long),",
+				"     startAt: 1L,",
+				"     stepValue: 1L) ~> surrogateKey2",
 				"surrogateKey1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     input(",
@@ -76,7 +85,11 @@
 				"          Online_Security = {Online Security},",
 				"          Online_Backup = {Online Backup},",
 				"          Monthly_Charge",
-				"     )) ~> sink1"
+				"     )) ~> sink1",
+				"surrogateKey2 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> sink2"
 			]
 		}
 	}
