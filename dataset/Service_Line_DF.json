@@ -39,6 +39,10 @@
 			{
 				"name": "Premimum_Tech_Support",
 				"type": "String"
+			},
+			{
+				"name": "Prop_5",
+				"type": "String"
 			}
 		]
 	}
