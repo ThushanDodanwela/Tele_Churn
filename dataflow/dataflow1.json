@@ -339,7 +339,7 @@
 				"     upsertable:false,",
 				"     truncate:true,",
 				"     format: 'table',",
-				"     preSQLs:['ALTER TABLE DIM_Broadband(Broadband_SK) DROP CONSTRAINT FK_Broadband_SK;\\n'],",
+				"     preSQLs:['ALTER TABLE billing_fact DROP CONSTRAINT FK_Broadband_SK;\\n'],",
 				"     postSQLs:['ALTER TABLE billing_fact\\nADD CONSTRAINT FK_Broadband_SK\\nFOREIGN KEY (Broadband_SK) REFERENCES DIM_Broadband(Broadband_SK);'],",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
