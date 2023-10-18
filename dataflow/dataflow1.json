@@ -576,7 +576,8 @@
 				"          Broadband_SK,",
 				"          Service_Line_SK = Servieline_SK,",
 				"          Streaming_SK = streamline_SK,",
-				"          Voice_Plan_SK = Voice_SK",
+				"          Voice_Plan_SK = Voice_SK,",
+				"          No_Calls",
 				"     )) ~> sink7"
 			]
 		}
