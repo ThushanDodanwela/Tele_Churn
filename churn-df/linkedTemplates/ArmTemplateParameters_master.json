@@ -32,6 +32,9 @@
 		"churnServer_properties_typeProperties_url": {
 			"value": "https://raw.githubusercontent.com/ThushanDodanwela/Tele_Churn/master/churn.csv"
 		},
+		"churnlabelHHTP_properties_typeProperties_url": {
+			"value": "https://raw.githubusercontent.com/ThushanDodanwela/Tele_Churn/master/churn.csv"
+		},
 		"customerServer_properties_typeProperties_url": {
 			"value": "https://raw.githubusercontent.com/ThushanDodanwela/Tele_Churn/master/customer.csv"
 		},

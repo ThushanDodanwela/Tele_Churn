@@ -13,6 +13,946 @@
 	},
 	"resources": [
 		{
+			"name": "[concat(parameters('factoryName'), '/churnlabel')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "churnlabelHHTP",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "HttpServerLocation"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": []
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/customer')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "customerServer",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "HttpServerLocation"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": []
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/customerDF')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureDataLakeStorage1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"fileName": "customer.csv",
+						"folderPath": "raw-data",
+						"fileSystem": "churn-stg-data"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": [
+					{
+						"name": "Customer ID",
+						"type": "String"
+					},
+					{
+						"name": "Gender",
+						"type": "String"
+					},
+					{
+						"name": "Age",
+						"type": "String"
+					},
+					{
+						"name": "Married",
+						"type": "String"
+					},
+					{
+						"name": "Number of Dependents",
+						"type": "String"
+					},
+					{
+						"name": "City",
+						"type": "String"
+					},
+					{
+						"name": "Zip Code",
+						"type": "String"
+					},
+					{
+						"name": "Number of Referrals",
+						"type": "String"
+					},
+					{
+						"name": "Multiple Lines8",
+						"type": "String"
+					},
+					{
+						"name": "Multiple Lines9",
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/customersink')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureDataLakeStorage1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"fileName": "customer.csv",
+						"folderPath": "raw-data",
+						"fileSystem": "churn-stg-data"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": []
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/date')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "dateServer",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "HttpServerLocation"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": []
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/dateDF')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureDataLakeStorage1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"fileName": "date.csv",
+						"folderPath": "raw-data",
+						"fileSystem": "churn-stg-data"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": [
+					{
+						"name": "Date_ID",
+						"type": "String"
+					},
+					{
+						"name": "Date",
+						"type": "String"
+					},
+					{
+						"name": "Year",
+						"type": "String"
+					},
+					{
+						"name": "Month",
+						"type": "String"
+					},
+					{
+						"name": "Quarter",
+						"type": "String"
+					},
+					{
+						"name": "Week",
+						"type": "String"
+					},
+					{
+						"name": "Day",
+						"type": "String"
+					},
+					{
+						"name": "Is_Awurudu_Month",
+						"type": "String"
+					},
+					{
+						"name": "Is_Vesak_Month",
+						"type": "String"
+					},
+					{
+						"name": "Is_Christmas_Month",
+						"type": "String"
+					},
+					{
+						"name": "Invoice_Due_Date",
+						"type": "String"
+					},
+					{
+						"name": "Invoice_Date",
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/dateSink')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureDataLakeStorage1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"fileName": "date.csv",
+						"folderPath": "raw-data",
+						"fileSystem": "churn-stg-data"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": []
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/serviceline')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "servicelineServer",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "HttpServerLocation"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": []
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/servicelineDF')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureDataLakeStorage1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"fileName": "serviceline.csv",
+						"folderPath": "raw-data",
+						"fileSystem": "churn-stg-data"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": [
+					{
+						"name": "Customer_ID",
+						"type": "String"
+					},
+					{
+						"name": "Service_Line Activation Date",
+						"type": "String"
+					},
+					{
+						"name": "Offer",
+						"type": "String"
+					},
+					{
+						"name": "Contract",
+						"type": "String"
+					},
+					{
+						"name": "Premimum_Tech_Support",
+						"type": "String"
+					},
+					{
+						"name": "Prop_5",
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/servicelineSink')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureDataLakeStorage1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"fileName": "serviceline.csv",
+						"folderPath": "raw-data",
+						"fileSystem": "churn-stg-data"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": []
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/streaming')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "streamingServer",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "HttpServerLocation"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": []
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/streamingSink')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureDataLakeStorage1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"fileName": "streaming.csv",
+						"folderPath": "raw-data",
+						"fileSystem": "churn-stg-data"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": []
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/streamlineDF')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureDataLakeStorage1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"fileName": "streaming.csv",
+						"folderPath": "raw-data",
+						"fileSystem": "churn-stg-data"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": [
+					{
+						"name": "Straming_Plan_ID",
+						"type": "String"
+					},
+					{
+						"name": "Streaming_Plan_Name",
+						"type": "String"
+					},
+					{
+						"name": "Monthly_Charge",
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/telechurn')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "teleChurnHTTP",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "HttpServerLocation",
+						"relativeUrl": "https://raw.githubusercontent.com/ThushanDodanwela/Tele_Churn/master/Tele_Churn.csv"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": []
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/telechurnSource')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "TeleChurnHTTP2",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "HttpServerLocation",
+						"relativeUrl": "https://raw.githubusercontent.com/ThushanDodanwela/Tele_Churn/master/Tele_Churn.csv"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": []
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/voice')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "voiceServer",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "HttpServerLocation"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": []
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/voiceSink')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureDataLakeStorage1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"fileName": "voice.csv",
+						"folderPath": "raw-data",
+						"fileSystem": "churn-stg-data"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": []
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/dataflow1')]",
+			"type": "Microsoft.DataFactory/factories/dataflows",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"type": "MappingDataFlow",
+				"typeProperties": {
+					"sources": [
+						{
+							"dataset": {
+								"referenceName": "broadbandDF",
+								"type": "DatasetReference"
+							},
+							"name": "broadband"
+						},
+						{
+							"dataset": {
+								"referenceName": "VoiceDF",
+								"type": "DatasetReference"
+							},
+							"name": "voice"
+						},
+						{
+							"dataset": {
+								"referenceName": "streamlineDF",
+								"type": "DatasetReference"
+							},
+							"name": "streamline"
+						},
+						{
+							"dataset": {
+								"referenceName": "customerDF",
+								"type": "DatasetReference"
+							},
+							"name": "customer"
+						},
+						{
+							"dataset": {
+								"referenceName": "churnDF",
+								"type": "DatasetReference"
+							},
+							"name": "churn"
+						},
+						{
+							"dataset": {
+								"referenceName": "servicelineDF",
+								"type": "DatasetReference"
+							},
+							"name": "serviceline"
+						}
+					],
+					"sinks": [
+						{
+							"dataset": {
+								"referenceName": "AzureSqlTable2",
+								"type": "DatasetReference"
+							},
+							"name": "sink1"
+						},
+						{
+							"dataset": {
+								"referenceName": "AzureSqlTable3",
+								"type": "DatasetReference"
+							},
+							"name": "sink2"
+						},
+						{
+							"dataset": {
+								"referenceName": "AzureSqlTable4",
+								"type": "DatasetReference"
+							},
+							"name": "sink3"
+						},
+						{
+							"dataset": {
+								"referenceName": "AzureSqlTable5",
+								"type": "DatasetReference"
+							},
+							"name": "sink4"
+						},
+						{
+							"dataset": {
+								"referenceName": "AzureSqlTable6",
+								"type": "DatasetReference"
+							},
+							"name": "sink5"
+						}
+					],
+					"transformations": [
+						{
+							"name": "surrogateKey1"
+						},
+						{
+							"name": "surrogateKey2"
+						},
+						{
+							"name": "cast1"
+						},
+						{
+							"name": "surrogateKey3"
+						},
+						{
+							"name": "cast2"
+						},
+						{
+							"name": "surrogateKey4"
+						},
+						{
+							"name": "cast3"
+						},
+						{
+							"name": "join1"
+						},
+						{
+							"name": "surrogateKey5"
+						},
+						{
+							"name": "cast4"
+						},
+						{
+							"name": "TenureinMonths"
+						}
+					],
+					"scriptLines": [
+						"source(output(",
+						"          Broadband_Plan_ID as string,",
+						"          Broadband_Plan_Name as string,",
+						"          Data_Allowance as integer,",
+						"          {Online Security} as boolean,",
+						"          {Online Backup} as boolean,",
+						"          Monthly_Charge as integer",
+						"     ),",
+						"     allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     ignoreNoFilesFound: false) ~> broadband",
+						"source(output(",
+						"          Voice_Plan_ID as string,",
+						"          Voice_Plan_Name as string,",
+						"          Monthly_Charge as string,",
+						"          IDD_Service as string",
+						"     ),",
+						"     allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     ignoreNoFilesFound: false) ~> voice",
+						"source(output(",
+						"          Straming_Plan_ID as string,",
+						"          Streaming_Plan_Name as string,",
+						"          Monthly_Charge as string",
+						"     ),",
+						"     allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     ignoreNoFilesFound: false) ~> streamline",
+						"source(output(",
+						"          {Customer ID} as string,",
+						"          Gender as string,",
+						"          Age as string,",
+						"          Married as string,",
+						"          {Number of Dependents} as string,",
+						"          City as string,",
+						"          {Zip Code} as string,",
+						"          {Number of Referrals} as string,",
+						"          {Multiple Lines8} as string,",
+						"          {Multiple Lines9} as string",
+						"     ),",
+						"     allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     ignoreNoFilesFound: false) ~> customer",
+						"source(output(",
+						"          Customer_ID as string,",
+						"          Churn_label as string",
+						"     ),",
+						"     allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     ignoreNoFilesFound: false) ~> churn",
+						"source(output(",
+						"          Customer_ID as string,",
+						"          {Service_Line Activation Date} as string,",
+						"          Offer as string,",
+						"          Contract as string,",
+						"          Premimum_Tech_Support as string,",
+						"          Prop_5 as string",
+						"     ),",
+						"     allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     ignoreNoFilesFound: false) ~> serviceline",
+						"broadband keyGenerate(output(Broadband_SK as long),",
+						"     startAt: 1L,",
+						"     stepValue: 1L) ~> surrogateKey1",
+						"cast1 keyGenerate(output(Voice_SK as long),",
+						"     startAt: 1L,",
+						"     stepValue: 1L) ~> surrogateKey2",
+						"voice cast(output(",
+						"          Monthly_Charge as integer,",
+						"          IDD_Service as boolean",
+						"     ),",
+						"     errors: true) ~> cast1",
+						"cast2 keyGenerate(output(streamline_SK as long),",
+						"     startAt: 1L,",
+						"     stepValue: 1L) ~> surrogateKey3",
+						"streamline cast(output(",
+						"          Monthly_Charge as integer",
+						"     ),",
+						"     errors: true) ~> cast2",
+						"cast3 keyGenerate(output(customer_SK as long),",
+						"     startAt: 87649L,",
+						"     stepValue: 1L) ~> surrogateKey4",
+						"join1 cast(output(",
+						"          Age as integer,",
+						"          Married as boolean,",
+						"          {Number of Dependents} as integer,",
+						"          {Number of Referrals} as integer,",
+						"          {Multiple Lines8} as boolean",
+						"     ),",
+						"     errors: true) ~> cast3",
+						"customer, churn join({Customer ID} == Customer_ID,",
+						"     joinType:'left',",
+						"     matchType:'exact',",
+						"     ignoreSpaces: false,",
+						"     broadcast: 'auto')~> join1",
+						"cast4 keyGenerate(output(Servieline_SK as long),",
+						"     startAt: 236483L,",
+						"     stepValue: 56L) ~> surrogateKey5",
+						"serviceline cast(output(",
+						"          {Service_Line Activation Date} as date 'MM/dd/yyyy',",
+						"          Premimum_Tech_Support as boolean",
+						"     ),",
+						"     errors: true) ~> cast4",
+						"surrogateKey5 derive({Tenure in Months} = ceil(monthsBetween(currentDate(), {Service_Line Activation Date},true()))) ~> TenureinMonths",
+						"surrogateKey1 sink(allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     input(",
+						"          Broadband_SK as integer,",
+						"          Broadband_Plan_Name as string,",
+						"          Data_Allowance as integer,",
+						"          Online_Security as boolean,",
+						"          Online_Backup as boolean,",
+						"          Monthly_Charge as decimal(10,2)",
+						"     ),",
+						"     deletable:false,",
+						"     insertable:true,",
+						"     updateable:false,",
+						"     upsertable:false,",
+						"     truncate:true,",
+						"     format: 'table',",
+						"     preSQLs:['DELETE FROM DIM_Broadband'],",
+						"     skipDuplicateMapInputs: true,",
+						"     skipDuplicateMapOutputs: true,",
+						"     errorHandlingOption: 'stopOnFirstError',",
+						"     mapColumn(",
+						"          Broadband_SK,",
+						"          Broadband_Plan_Name,",
+						"          Data_Allowance,",
+						"          Online_Security = {Online Security},",
+						"          Online_Backup = {Online Backup},",
+						"          Monthly_Charge",
+						"     )) ~> sink1",
+						"surrogateKey2 sink(allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     input(",
+						"          Voice_Plan_SK as integer,",
+						"          Voice_Plan_Name as string,",
+						"          Monthly_Charge as decimal(10,2),",
+						"          IDD_Service as boolean",
+						"     ),",
+						"     deletable:false,",
+						"     insertable:true,",
+						"     updateable:false,",
+						"     upsertable:false,",
+						"     truncate:true,",
+						"     format: 'table',",
+						"     preSQLs:['DELETE FROM  DIM_Voice_Plan'],",
+						"     skipDuplicateMapInputs: true,",
+						"     skipDuplicateMapOutputs: true,",
+						"     errorHandlingOption: 'stopOnFirstError',",
+						"     mapColumn(",
+						"          Voice_Plan_SK = Voice_SK,",
+						"          Voice_Plan_Name,",
+						"          Monthly_Charge,",
+						"          IDD_Service",
+						"     )) ~> sink2",
+						"surrogateKey3 sink(allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     input(",
+						"          Streaming_SK as integer,",
+						"          Streaming_Plan_Name as string,",
+						"          Monthly_Charge as decimal(10,2)",
+						"     ),",
+						"     deletable:false,",
+						"     insertable:true,",
+						"     updateable:false,",
+						"     upsertable:false,",
+						"     truncate:true,",
+						"     format: 'table',",
+						"     preSQLs:['DELETE FROM DIM_Streaming'],",
+						"     skipDuplicateMapInputs: true,",
+						"     skipDuplicateMapOutputs: true,",
+						"     errorHandlingOption: 'stopOnFirstError',",
+						"     mapColumn(",
+						"          Streaming_SK = streamline_SK,",
+						"          Streaming_Plan_Name,",
+						"          Monthly_Charge",
+						"     )) ~> sink3",
+						"surrogateKey4 sink(allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     input(",
+						"          Customer_SK as integer,",
+						"          Customer_Name as string,",
+						"          Gender as string,",
+						"          Age as integer,",
+						"          Married as boolean,",
+						"          Number_of_Dependents as integer,",
+						"          City as string,",
+						"          Zip_Code as string,",
+						"          Number_of_Referrals as integer,",
+						"          Multiple_Lines as boolean,",
+						"          IsChurn as string",
+						"     ),",
+						"     deletable:false,",
+						"     insertable:true,",
+						"     updateable:false,",
+						"     upsertable:false,",
+						"     truncate:true,",
+						"     format: 'table',",
+						"     preSQLs:['DELETE FROM DIM_Customer'],",
+						"     postSQLs:['ALTER TABLE billing_fact\\nADD CONSTRAINT FK_Customer_SK\\nFOREIGN KEY (Customer_SK) REFERENCES DIM_Customer(Customer_SK);'],",
+						"     skipDuplicateMapInputs: true,",
+						"     skipDuplicateMapOutputs: true,",
+						"     errorHandlingOption: 'stopOnFirstError',",
+						"     mapColumn(",
+						"          Customer_SK = customer_SK,",
+						"          Gender,",
+						"          Age,",
+						"          Married,",
+						"          Number_of_Dependents = {Number of Dependents},",
+						"          City,",
+						"          Zip_Code = {Zip Code},",
+						"          Number_of_Referrals = {Number of Referrals},",
+						"          Multiple_Lines = {Multiple Lines8},",
+						"          IsChurn = Churn_label",
+						"     )) ~> sink4",
+						"TenureinMonths sink(allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     input(",
+						"          Service_Line_SK as integer,",
+						"          Tenure_in_Months as integer,",
+						"          Offer as string,",
+						"          Contract_Type as string,",
+						"          Premium_Tech_Support as boolean",
+						"     ),",
+						"     deletable:false,",
+						"     insertable:true,",
+						"     updateable:false,",
+						"     upsertable:false,",
+						"     truncate:true,",
+						"     format: 'table',",
+						"     preSQLs:['DELETE FROM DIM_Service_Line'],",
+						"     skipDuplicateMapInputs: true,",
+						"     skipDuplicateMapOutputs: true,",
+						"     errorHandlingOption: 'stopOnFirstError',",
+						"     mapColumn(",
+						"          Service_Line_SK = Servieline_SK,",
+						"          Tenure_in_Months = {Tenure in Months},",
+						"          Offer,",
+						"          Contract_Type = Contract,",
+						"          Premium_Tech_Support = Premimum_Tech_Support",
+						"     )) ~> sink5"
+					]
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/streamlineDF')]",
+				"[concat(variables('factoryId'), '/datasets/customerDF')]",
+				"[concat(variables('factoryId'), '/datasets/servicelineDF')]"
+			]
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/data-ingestion')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
 			"apiVersion": "2018-06-01",
@@ -538,6 +1478,118 @@
 								"parameters": {}
 							}
 						]
+					},
+					{
+						"name": "Data flow1",
+						"type": "ExecuteDataFlow",
+						"dependsOn": [
+							{
+								"activity": "churnLabel",
+								"dependencyConditions": [
+									"Completed"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"dataflow": {
+								"referenceName": "dataflow1",
+								"type": "DataFlowReference",
+								"parameters": {},
+								"datasetParameters": {
+									"broadband": {},
+									"voice": {},
+									"streamline": {},
+									"customer": {},
+									"churn": {},
+									"serviceline": {},
+									"sink1": {},
+									"sink2": {},
+									"sink3": {},
+									"sink4": {},
+									"sink5": {}
+								}
+							},
+							"staging": {},
+							"compute": {
+								"coreCount": 8,
+								"computeType": "General"
+							},
+							"traceLevel": "Fine"
+						}
+					},
+					{
+						"name": "churnLabel",
+						"type": "Copy",
+						"dependsOn": [
+							{
+								"activity": "TeleChurn",
+								"dependencyConditions": [
+									"Completed"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "DelimitedTextSource",
+								"storeSettings": {
+									"type": "HttpReadSettings",
+									"requestMethod": "GET"
+								},
+								"formatSettings": {
+									"type": "DelimitedTextReadSettings"
+								}
+							},
+							"sink": {
+								"type": "DelimitedTextSink",
+								"storeSettings": {
+									"type": "AzureBlobFSWriteSettings"
+								},
+								"formatSettings": {
+									"type": "DelimitedTextWriteSettings",
+									"quoteAllText": true,
+									"fileExtension": ".txt"
+								}
+							},
+							"enableStaging": false,
+							"translator": {
+								"type": "TabularTranslator",
+								"typeConversion": true,
+								"typeConversionSettings": {
+									"allowDataTruncation": true,
+									"treatBooleanAsNumber": false
+								}
+							}
+						},
+						"inputs": [
+							{
+								"referenceName": "churnlabel",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "ChurnLabelSink",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						]
 					}
 				],
 				"policy": {
@@ -545,76 +1597,20 @@
 				},
 				"annotations": []
 			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/dataflow1')]",
-			"type": "Microsoft.DataFactory/factories/dataflows",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"type": "MappingDataFlow",
-				"typeProperties": {
-					"sources": [
-						{
-							"dataset": {
-								"referenceName": "broadbandDF",
-								"type": "DatasetReference"
-							},
-							"name": "broadband"
-						}
-					],
-					"sinks": [
-						{
-							"dataset": {
-								"referenceName": "AzureSqlTable2",
-								"type": "DatasetReference"
-							},
-							"name": "sink1"
-						}
-					],
-					"transformations": [],
-					"scriptLines": [
-						"source(output(",
-						"          Broadband_Plan_ID as string,",
-						"          Broadband_Plan_Name as string,",
-						"          Data_Allowance as string,",
-						"          {Online Security} as string,",
-						"          {Online Backup} as string,",
-						"          Monthly_Charge as string",
-						"     ),",
-						"     allowSchemaDrift: true,",
-						"     validateSchema: false,",
-						"     ignoreNoFilesFound: false) ~> broadband",
-						"broadband sink(allowSchemaDrift: true,",
-						"     validateSchema: false,",
-						"     input(",
-						"          Broadband_SK as integer,",
-						"          Broadband_Plan_Name as string,",
-						"          Data_Allowance as integer,",
-						"          Online_Security as boolean,",
-						"          Online_Backup as boolean,",
-						"          Monthly_Charge as decimal(10,2)",
-						"     ),",
-						"     deletable:false,",
-						"     insertable:true,",
-						"     updateable:false,",
-						"     upsertable:false,",
-						"     format: 'table',",
-						"     skipDuplicateMapInputs: true,",
-						"     skipDuplicateMapOutputs: true,",
-						"     errorHandlingOption: 'stopOnFirstError',",
-						"     mapColumn(",
-						"          Broadband_SK = Broadband_Plan_ID,",
-						"          Broadband_Plan_Name,",
-						"          Data_Allowance,",
-						"          Online_Security = {Online Security},",
-						"          Online_Backup = {Online Backup},",
-						"          Monthly_Charge",
-						"     )) ~> sink1"
-					]
-				}
-			},
-			"dependsOn": []
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/customer')]",
+				"[concat(variables('factoryId'), '/datasets/customersink')]",
+				"[concat(variables('factoryId'), '/datasets/date')]",
+				"[concat(variables('factoryId'), '/datasets/dateSink')]",
+				"[concat(variables('factoryId'), '/datasets/serviceline')]",
+				"[concat(variables('factoryId'), '/datasets/servicelineSink')]",
+				"[concat(variables('factoryId'), '/datasets/streaming')]",
+				"[concat(variables('factoryId'), '/datasets/streamingSink')]",
+				"[concat(variables('factoryId'), '/datasets/voice')]",
+				"[concat(variables('factoryId'), '/datasets/voiceSink')]",
+				"[concat(variables('factoryId'), '/dataflows/dataflow1')]",
+				"[concat(variables('factoryId'), '/datasets/churnlabel')]"
+			]
 		}
 	]
 }

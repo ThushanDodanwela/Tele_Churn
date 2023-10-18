@@ -43,6 +43,10 @@
 			"type": "string",
 			"defaultValue": "https://raw.githubusercontent.com/ThushanDodanwela/Tele_Churn/master/churn.csv"
 		},
+		"churnlabelHHTP_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://raw.githubusercontent.com/ThushanDodanwela/Tele_Churn/master/churn.csv"
+		},
 		"customerServer_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://raw.githubusercontent.com/ThushanDodanwela/Tele_Churn/master/customer.csv"
@@ -120,6 +124,9 @@
 					},
 					"churnServer_properties_typeProperties_url": {
 						"value": "[parameters('churnServer_properties_typeProperties_url')]"
+					},
+					"churnlabelHHTP_properties_typeProperties_url": {
+						"value": "[parameters('churnlabelHHTP_properties_typeProperties_url')]"
 					},
 					"customerServer_properties_typeProperties_url": {
 						"value": "[parameters('customerServer_properties_typeProperties_url')]"
