@@ -1,0 +1,122 @@
+{
+	"name": "AzureSqlTable7",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabase2",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "Billing_Id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Customer_SK",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Broadband_SK",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Service_Line_SK",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Streaming_SK",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Voice_Plan_SK",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Invoiced_Due_Date_SK",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Invoiced_Date_SK",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "No_Calls",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "No_Minutes",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Roaming_Minutes",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Total_Streaming_Charge",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 2
+			},
+			{
+				"name": "No_Extra_Channel_Subscription",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Extra_Data_MB_Used",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Extra_Data_Charge",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 2
+			},
+			{
+				"name": "Total_Call_Charge",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 2
+			},
+			{
+				"name": "Total_Broadband_Charge",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 2
+			},
+			{
+				"name": "Service_Charge",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 2
+			},
+			{
+				"name": "Due_Charge",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 2
+			},
+			{
+				"name": "Paperless_Billing",
+				"type": "bit"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "billing_fact"
+		}
+	}
+}
