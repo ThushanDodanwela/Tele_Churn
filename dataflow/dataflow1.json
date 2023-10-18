@@ -52,9 +52,6 @@
 						"type": "DatasetReference"
 					},
 					"name": "Date"
-				},
-				{
-					"name": "source1"
 				}
 			],
 			"sinks": [
@@ -224,8 +221,6 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> Date",
-				"source(allowSchemaDrift: true,",
-				"     validateSchema: false) ~> source1",
 				"broadband keyGenerate(output(Broadband_SK as long),",
 				"     startAt: 1L,",
 				"     stepValue: 1L) ~> surrogateKey1",
