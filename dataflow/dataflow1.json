@@ -107,6 +107,9 @@
 				},
 				{
 					"name": "cast4"
+				},
+				{
+					"name": "derivedColumn1"
 				}
 			],
 			"scriptLines": [
@@ -212,6 +215,7 @@
 				"          {Service_Line Activation Date} as date 'MM/dd/yyyy'",
 				"     ),",
 				"     errors: true) ~> cast4",
+				"surrogateKey5 derive(column1 = ERROR_FUNCTION('')) ~> derivedColumn1",
 				"surrogateKey1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     input(",
