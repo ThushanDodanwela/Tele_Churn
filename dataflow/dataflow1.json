@@ -509,7 +509,9 @@
 				"          each(match(/* All input columns */ true()),",
 				"               /* Input name */ $$ = $$),",
 				"          Billing_Id = billing_SK,",
-				"          Customer_SK = billing@Customer_ID",
+				"          Customer_SK = customer_SK,",
+				"          Broadband_SK,",
+				"          Service_Line_SK = billing@Customer_ID",
 				"     )) ~> sink6"
 			]
 		}
