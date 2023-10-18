@@ -1,0 +1,105 @@
+{
+	"name": "BIllingDF2",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureDataLakeStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "billing.csv",
+				"folderPath": "raw-data",
+				"fileSystem": "churn-stg-data"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "Customer_ID",
+				"type": "String"
+			},
+			{
+				"name": "Voice_Plan_ID",
+				"type": "String"
+			},
+			{
+				"name": "Broadband_Plan_Id",
+				"type": "String"
+			},
+			{
+				"name": "Streaming_ID",
+				"type": "String"
+			},
+			{
+				"name": "Invoice_Due_Date",
+				"type": "String"
+			},
+			{
+				"name": "Invoice_Date",
+				"type": "String"
+			},
+			{
+				"name": "No_Calls",
+				"type": "String"
+			},
+			{
+				"name": "No_Minutes",
+				"type": "String"
+			},
+			{
+				"name": "Roaming_Minutes",
+				"type": "String"
+			},
+			{
+				"name": "Total_Call_Charge",
+				"type": "String"
+			},
+			{
+				"name": "No_Extra_Channel_Subscription",
+				"type": "String"
+			},
+			{
+				"name": "Extra_Channel_Chargers",
+				"type": "String"
+			},
+			{
+				"name": "Total_Streaming_Charge",
+				"type": "String"
+			},
+			{
+				"name": "Extra_Data_GB_Used",
+				"type": "String"
+			},
+			{
+				"name": "Extra_Data_Charge",
+				"type": "String"
+			},
+			{
+				"name": "Total_Broadband_Charge",
+				"type": "String"
+			},
+			{
+				"name": "Service_Charge",
+				"type": "String"
+			},
+			{
+				"name": "Due_Charges",
+				"type": "String"
+			},
+			{
+				"name": "Paperless_Billing",
+				"type": "String"
+			},
+			{
+				"name": "Payment_Method",
+				"type": "String"
+			}
+		]
+	}
+}
