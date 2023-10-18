@@ -1,0 +1,190 @@
+{
+	"name": "dataflow1_1_SCD",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "broadbandDF",
+						"type": "DatasetReference"
+					},
+					"name": "broadband"
+				},
+				{
+					"dataset": {
+						"referenceName": "AzureSqlTable11",
+						"type": "DatasetReference"
+					},
+					"name": "SQLBroadband"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "AzureSqlTable2",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				},
+				{
+					"dataset": {
+						"referenceName": "AzureSqlTable12",
+						"type": "DatasetReference"
+					},
+					"name": "sink2"
+				}
+			],
+			"transformations": [
+				{
+					"name": "surrogateKey1"
+				},
+				{
+					"name": "IsAcive"
+				},
+				{
+					"name": "cast6"
+				},
+				{
+					"name": "selectbroadbandsql"
+				},
+				{
+					"name": "lookup1"
+				},
+				{
+					"name": "filterExistingRows"
+				},
+				{
+					"name": "select1"
+				},
+				{
+					"name": "derivedColumn1"
+				},
+				{
+					"name": "alterRow1"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          Broadband_Plan_ID as integer,",
+				"          Broadband_Plan_Name as string,",
+				"          Data_Allowance as integer,",
+				"          {Online Security} as boolean,",
+				"          {Online Backup} as boolean,",
+				"          Monthly_Charge as integer",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> broadband",
+				"source(output(",
+				"          Broadband_SK as integer,",
+				"          Broadband_Plan_Name as string,",
+				"          Data_Allowance as integer,",
+				"          Online_Security as boolean,",
+				"          Online_Backup as boolean,",
+				"          Monthly_Charge as decimal(10,2),",
+				"          Is_Active as boolean",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     isolationLevel: 'READ_UNCOMMITTED',",
+				"     format: 'table') ~> SQLBroadband",
+				"broadband keyGenerate(output(Broadband_SK as long),",
+				"     startAt: 1L,",
+				"     stepValue: 1L) ~> surrogateKey1",
+				"surrogateKey1 derive(IsActive = 1) ~> IsAcive",
+				"IsAcive cast(output(",
+				"          IsActive as boolean",
+				"     ),",
+				"     errors: true) ~> cast6",
+				"SQLBroadband select(mapColumn(",
+				"          SQL_Broadband_SK = Broadband_SK,",
+				"          SQL_Broadband_Plan_Name = Broadband_Plan_Name,",
+				"          SQL_Data_Allowance = Data_Allowance,",
+				"          SQL_Online_Security = Online_Security,",
+				"          SQL_Online_Backup = Online_Backup,",
+				"          SQL_Monthly_Charge = Monthly_Charge,",
+				"          SQL_Is_Active = Is_Active",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> selectbroadbandsql",
+				"broadband, selectbroadbandsql lookup(Broadband_Plan_ID == SQL_Broadband_SK,",
+				"     multiple: true,",
+				"     broadcast: 'auto')~> lookup1",
+				"lookup1 filter(!isNull(SQL_Broadband_SK)) ~> filterExistingRows",
+				"filterExistingRows select(mapColumn(",
+				"          SQL_Broadband_SK,",
+				"          SQL_Broadband_Plan_Name,",
+				"          SQL_Data_Allowance,",
+				"          SQL_Online_Security,",
+				"          SQL_Online_Backup,",
+				"          SQL_Monthly_Charge,",
+				"          SQL_Is_Active",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> select1",
+				"select1 derive(SQL_Is_Active = 0) ~> derivedColumn1",
+				"derivedColumn1 alterRow(updateIf(1 ==1)) ~> alterRow1",
+				"cast6 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          Broadband_SK as integer,",
+				"          Broadband_Plan_Name as string,",
+				"          Data_Allowance as integer,",
+				"          Online_Security as boolean,",
+				"          Online_Backup as boolean,",
+				"          Monthly_Charge as decimal(10,2),",
+				"          Is_Active as boolean",
+				"     ),",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     truncate:true,",
+				"     format: 'table',",
+				"     preSQLs:['DELETE FROM DIM_Broadband'],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     errorHandlingOption: 'stopOnFirstError',",
+				"     mapColumn(",
+				"          Broadband_SK,",
+				"          Broadband_Plan_Name,",
+				"          Data_Allowance,",
+				"          Online_Security = {Online Security},",
+				"          Online_Backup = {Online Backup},",
+				"          Monthly_Charge,",
+				"          Is_Active = IsActive",
+				"     )) ~> sink1",
+				"alterRow1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          Broadband_SK as integer,",
+				"          Broadband_Plan_Name as string,",
+				"          Data_Allowance as integer,",
+				"          Online_Security as boolean,",
+				"          Online_Backup as boolean,",
+				"          Monthly_Charge as decimal(10,2),",
+				"          Is_Active as boolean",
+				"     ),",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:true,",
+				"     upsertable:false,",
+				"     keys:['Broadband_SK'],",
+				"     format: 'table',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     errorHandlingOption: 'stopOnFirstError',",
+				"     mapColumn(",
+				"          Broadband_SK = SQL_Broadband_SK,",
+				"          Broadband_Plan_Name = SQL_Broadband_Plan_Name,",
+				"          Data_Allowance = SQL_Data_Allowance,",
+				"          Online_Security = SQL_Online_Security,",
+				"          Online_Backup = SQL_Online_Backup,",
+				"          Monthly_Charge = SQL_Monthly_Charge,",
+				"          Is_Active = SQL_Is_Active",
+				"     )) ~> sink2"
+			]
+		}
+	}
+}
