@@ -275,7 +275,19 @@
 				"     format: 'table',",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
-				"     errorHandlingOption: 'stopOnFirstError') ~> sink4"
+				"     errorHandlingOption: 'stopOnFirstError',",
+				"     mapColumn(",
+				"          Customer_SK = customer_SK,",
+				"          Gender,",
+				"          Age,",
+				"          Married,",
+				"          Number_of_Dependents = {Number of Dependents},",
+				"          City,",
+				"          Zip_Code = {Zip Code},",
+				"          Number_of_Referrals = {Number of Referrals},",
+				"          Multiple_Lines = {Multiple Lines8},",
+				"          IsChurn = Churn_label",
+				"     )) ~> sink4"
 			]
 		}
 	}
