@@ -103,6 +103,9 @@
 						"type": "DatasetReference"
 					},
 					"name": "sink6"
+				},
+				{
+					"name": "sink7"
 				}
 			],
 			"transformations": [
@@ -529,7 +532,11 @@
 				"          Is_Awurudu = Is_Awurudu_Month,",
 				"          invoice_due_date = Invoice_Due_Date,",
 				"          invoice_date = Invoice_Date",
-				"     )) ~> sink6"
+				"     )) ~> sink6",
+				"join6 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> sink7"
 			]
 		}
 	}
