@@ -286,7 +286,7 @@
 				"          Payment_Method as string",
 				"     ),",
 				"     errors: true) ~> cast5",
-				"cast5, broadband join(billing@Broadband_Plan_Id == broadband@Broadband_Plan_ID,",
+				"cast5, surrogateKey1 join(billing@Broadband_Plan_Id == broadband@Broadband_Plan_ID,",
 				"     joinType:'inner',",
 				"     matchType:'exact',",
 				"     ignoreSpaces: false,",
