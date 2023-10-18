@@ -89,6 +89,13 @@
 						"type": "DatasetReference"
 					},
 					"name": "sink5"
+				},
+				{
+					"dataset": {
+						"referenceName": "AzureSqlTable8",
+						"type": "DatasetReference"
+					},
+					"name": "sink6"
 				}
 			],
 			"transformations": [
@@ -130,6 +137,9 @@
 				},
 				{
 					"name": "cast5"
+				},
+				{
+					"name": "surrogateKey7"
 				}
 			],
 			"scriptLines": [
@@ -271,6 +281,9 @@
 				"          Invoice_Date as boolean",
 				"     ),",
 				"     errors: true) ~> cast5",
+				"cast5 keyGenerate(output(date_SK as long),",
+				"     startAt: 1L,",
+				"     stepValue: 1L) ~> surrogateKey7",
 				"surrogateKey1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     input(",
@@ -408,7 +421,29 @@
 				"          Offer,",
 				"          Contract_Type = Contract,",
 				"          Premium_Tech_Support = Premimum_Tech_Support",
-				"     )) ~> sink5"
+				"     )) ~> sink5",
+				"surrogateKey7 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          Date_SK as integer,",
+				"          Day as integer,",
+				"          Week as integer,",
+				"          Month as integer,",
+				"          Year as integer,",
+				"          Quarter as integer,",
+				"          Is_Christmas_Day as boolean,",
+				"          Is_Vesak as boolean,",
+				"          Is_Awurudu as boolean",
+				"     ),",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     truncate:true,",
+				"     format: 'table',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     errorHandlingOption: 'stopOnFirstError') ~> sink6"
 			]
 		}
 	}
