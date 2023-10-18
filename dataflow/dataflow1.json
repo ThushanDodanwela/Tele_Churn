@@ -339,7 +339,7 @@
 				"     upsertable:false,",
 				"     recreate:true,",
 				"     format: 'table',",
-				"     preSQLs:['ALTER TABLE dbo.OtherTable1 DROP CONSTRAINT FK_Constraint1;\\nALTER TABLE dbo.OtherTable2 DROP CONSTRAINT FK_Constraint2;'],",
+				"     preSQLs:['ALTER TABLE dbo.OtherTable1 DROP CONSTRAINT FK_Customer_SK;\\n'],",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
 				"     errorHandlingOption: 'stopOnFirstError',",
