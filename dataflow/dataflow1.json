@@ -507,7 +507,9 @@
 				"     errorHandlingOption: 'stopOnFirstError',",
 				"     mapColumn(",
 				"          each(match(/* All input columns */ true()),",
-				"               /* Input name */ $$ = $$)",
+				"               /* Input name */ $$ = $$),",
+				"          Billing_Id = billing_SK,",
+				"          Customer_SK = billing@Customer_ID",
 				"     )) ~> sink6"
 			]
 		}
