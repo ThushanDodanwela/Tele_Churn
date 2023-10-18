@@ -172,9 +172,6 @@
 				},
 				{
 					"name": "join7"
-				},
-				{
-					"name": "cast6"
 				}
 			],
 			"scriptLines": [
@@ -375,10 +372,6 @@
 				"     matchType:'exact',",
 				"     ignoreSpaces: false,",
 				"     broadcast: 'auto')~> join7",
-				"join7 cast(output(",
-				"          customer_SK as string",
-				"     ),",
-				"     errors: true) ~> cast6",
 				"surrogateKey1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     input(",
@@ -553,7 +546,7 @@
 				"          invoice_due_date = Invoice_Due_Date,",
 				"          invoice_date = Invoice_Date",
 				"     )) ~> sink6",
-				"cast6 sink(allowSchemaDrift: true,",
+				"join7 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     input(",
 				"          Billing_Id as integer,",
@@ -593,7 +586,9 @@
 				"          Service_Line_SK = Servieline_SK,",
 				"          Streaming_SK = streamline_SK,",
 				"          Voice_Plan_SK = Voice_SK,",
-				"          No_Calls",
+				"          No_Calls,",
+				"          No_Minutes,",
+				"          Roaming_Minutes",
 				"     )) ~> sink7"
 			]
 		}
