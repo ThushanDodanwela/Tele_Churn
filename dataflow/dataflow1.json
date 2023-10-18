@@ -106,7 +106,7 @@
 					"name": "surrogateKey5"
 				},
 				{
-					"name": "derivedColumn1"
+					"name": "cast4"
 				}
 			],
 			"scriptLines": [
@@ -207,7 +207,10 @@
 				"ServiceLine keyGenerate(output(ServiceLine_SK as long),",
 				"     startAt: 34869L,",
 				"     stepValue: 67L) ~> surrogateKey5",
-				"surrogateKey5 derive() ~> derivedColumn1",
+				"surrogateKey5 cast(output(",
+				"          {Service_Line Activation Date} as date 'yyyy/MM/dd'",
+				"     ),",
+				"     errors: true) ~> cast4",
 				"surrogateKey1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     input(",
