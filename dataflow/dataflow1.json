@@ -591,7 +591,9 @@
 				"          Roaming_Minutes,",
 				"          Total_Streaming_Charge,",
 				"          No_Extra_Channel_Subscription,",
-				"          Extra_Data_MB_Used = Extra_Data_GB_Used",
+				"          Extra_Data_MB_Used = Extra_Data_GB_Used,",
+				"          Extra_Data_Charge,",
+				"          Total_Call_Charge",
 				"     )) ~> sink7"
 			]
 		}
