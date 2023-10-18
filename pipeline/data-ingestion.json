@@ -592,7 +592,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataflow": {
-						"referenceName": "dataflow1_1_SCD",
+						"referenceName": "dataflow1_copy1",
 						"type": "DataFlowReference"
 					},
 					"compute": {
@@ -623,7 +623,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataflow": {
-						"referenceName": "dataflow1",
+						"referenceName": "dataflow1_1_SCD",
 						"type": "DataFlowReference"
 					},
 					"compute": {
