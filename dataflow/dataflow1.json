@@ -215,7 +215,7 @@
 				"          {Service_Line Activation Date} as date 'MM/dd/yyyy'",
 				"     ),",
 				"     errors: true) ~> cast4",
-				"surrogateKey5 derive(column1 = monthsBetween({Service_Line Activation Date}, currentDate())) ~> derivedColumn1",
+				"surrogateKey5 derive(column1 = monthsBetween(currentDate(), {Service_Line Activation Date})) ~> derivedColumn1",
 				"surrogateKey1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     input(",
