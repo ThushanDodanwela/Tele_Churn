@@ -104,6 +104,9 @@
 				},
 				{
 					"name": "surrogateKey5"
+				},
+				{
+					"name": "parse1"
 				}
 			],
 			"scriptLines": [
@@ -202,9 +205,11 @@
 				"     matchType:'exact',",
 				"     ignoreSpaces: false,",
 				"     broadcast: 'auto')~> join1",
-				"serviceline keyGenerate(output({undefined} as long),",
-				"     startAt: 1L,",
-				"     stepValue: 1L) ~> surrogateKey5",
+				"serviceline keyGenerate(output(Servieline_SK as long),",
+				"     startAt: 236483L,",
+				"     stepValue: 56L) ~> surrogateKey5",
+				"surrogateKey5 parse(format: 'json',",
+				"     documentForm: 'documentPerLine') ~> parse1",
 				"surrogateKey1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     input(",
