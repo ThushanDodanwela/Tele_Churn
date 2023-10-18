@@ -108,7 +108,7 @@
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> selectbroadbandsql",
-				"broadband, selectbroadbandsql lookup(Broadband_Plan_ID == SQL_Broadband_SK,",
+				"broadband, selectbroadbandsql lookup(Broadband_Plan_Name == SQL_Broadband_Plan_Name,",
 				"     multiple: true,",
 				"     broadcast: 'auto')~> lookup1",
 				"lookup1 filter(!isNull(SQL_Broadband_SK)) ~> filterExistingRows",
