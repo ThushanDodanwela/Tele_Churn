@@ -352,7 +352,8 @@
 				"          Service_Line_SK = Servieline_SK,",
 				"          Tenure_in_Months = {Tenure in Months},",
 				"          Offer,",
-				"          Contract_Type = Contract",
+				"          Contract_Type = Contract,",
+				"          Premium_Tech_Support = Premimum_Tech_Support",
 				"     )) ~> sink5"
 			]
 		}
