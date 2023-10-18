@@ -155,6 +155,7 @@
 				"          Age as integer,",
 				"          Married as boolean,",
 				"          {Number of Dependents} as integer,",
+				"          {Number of Referrals} as integer,",
 				"          {Multiple Lines8} as boolean",
 				"     ),",
 				"     errors: true) ~> cast3",
