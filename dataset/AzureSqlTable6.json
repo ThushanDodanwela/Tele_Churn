@@ -1,0 +1,39 @@
+{
+	"name": "AzureSqlTable6",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabase2",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "Service_Line_SK",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Tenure_in_Months",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Offer",
+				"type": "varchar"
+			},
+			{
+				"name": "Contract_Type",
+				"type": "varchar"
+			},
+			{
+				"name": "Premium_Tech_Support",
+				"type": "bit"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "DIM_Service_Line"
+		}
+	}
+}

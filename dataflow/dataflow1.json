@@ -77,6 +77,10 @@
 					"name": "sink4"
 				},
 				{
+					"dataset": {
+						"referenceName": "AzureSqlTable6",
+						"type": "DatasetReference"
+					},
 					"name": "sink5"
 				}
 			],
@@ -328,8 +332,24 @@
 				"     )) ~> sink4",
 				"TenureinMonths sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
+				"     input(",
+				"          Service_Line_SK as integer,",
+				"          Tenure_in_Months as integer,",
+				"          Offer as string,",
+				"          Contract_Type as string,",
+				"          Premium_Tech_Support as boolean",
+				"     ),",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     format: 'table',",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> sink5"
+				"     skipDuplicateMapOutputs: true,",
+				"     errorHandlingOption: 'stopOnFirstError',",
+				"     mapColumn(",
+				"          Offer",
+				"     )) ~> sink5"
 			]
 		}
 	}
