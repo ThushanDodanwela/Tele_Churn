@@ -177,7 +177,7 @@
 				"     ),",
 				"     errors: true) ~> cast3",
 				"customer, churn join({Customer ID} == Customer_ID,",
-				"     joinType:'inner',",
+				"     joinType:'left',",
 				"     matchType:'exact',",
 				"     ignoreSpaces: false,",
 				"     broadcast: 'auto')~> join1",
