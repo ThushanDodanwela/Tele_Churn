@@ -17,6 +17,13 @@
 						"type": "DatasetReference"
 					},
 					"name": "voice"
+				},
+				{
+					"dataset": {
+						"referenceName": "streamlineDF",
+						"type": "DatasetReference"
+					},
+					"name": "streamline"
 				}
 			],
 			"sinks": [
@@ -67,6 +74,14 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> voice",
+				"source(output(",
+				"          Straming_Plan_ID as string,",
+				"          Streaming_Plan_Name as string,",
+				"          Monthly_Charge as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> streamline",
 				"broadband keyGenerate(output(Broadband_SK as long),",
 				"     startAt: 1L,",
 				"     stepValue: 1L) ~> surrogateKey1",

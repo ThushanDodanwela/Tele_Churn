@@ -1,0 +1,37 @@
+{
+	"name": "streamlineDF",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureDataLakeStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "streaming.csv",
+				"folderPath": "raw-data",
+				"fileSystem": "churn-stg-data"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "Straming_Plan_ID",
+				"type": "String"
+			},
+			{
+				"name": "Streaming_Plan_Name",
+				"type": "String"
+			},
+			{
+				"name": "Monthly_Charge",
+				"type": "String"
+			}
+		]
+	}
+}
