@@ -105,6 +105,10 @@
 					"name": "sink6"
 				},
 				{
+					"dataset": {
+						"referenceName": "AzureSqlTable9",
+						"type": "DatasetReference"
+					},
 					"name": "sink7"
 				}
 			],
@@ -535,8 +539,41 @@
 				"     )) ~> sink6",
 				"join6 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
+				"     input(",
+				"          Billing_Id as integer,",
+				"          Customer_SK as integer,",
+				"          Broadband_SK as integer,",
+				"          Service_Line_SK as integer,",
+				"          Streaming_SK as integer,",
+				"          Voice_Plan_SK as integer,",
+				"          Invoiced_Due_Date_SK as integer,",
+				"          Invoiced_Date_SK as integer,",
+				"          No_Calls as integer,",
+				"          No_Minutes as integer,",
+				"          Roaming_Minutes as integer,",
+				"          Total_Streaming_Charge as decimal(10,2),",
+				"          No_Extra_Channel_Subscription as integer,",
+				"          Extra_Data_MB_Used as integer,",
+				"          Extra_Data_Charge as decimal(10,2),",
+				"          Total_Call_Charge as decimal(10,2),",
+				"          Total_Broadband_Charge as decimal(10,2),",
+				"          Service_Charge as decimal(10,2),",
+				"          Due_Charge as decimal(10,2),",
+				"          Paperless_Billing as boolean,",
+				"          Date_SK as integer",
+				"     ),",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     format: 'table',",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> sink7"
+				"     skipDuplicateMapOutputs: true,",
+				"     errorHandlingOption: 'stopOnFirstError',",
+				"     mapColumn(",
+				"          Customer_SK = customer_SK,",
+				"          Broadband_SK",
+				"     )) ~> sink7"
 			]
 		}
 	}
