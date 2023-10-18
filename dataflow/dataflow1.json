@@ -571,8 +571,10 @@
 				"     skipDuplicateMapOutputs: true,",
 				"     errorHandlingOption: 'stopOnFirstError',",
 				"     mapColumn(",
+				"          Billing_Id = billing_SK,",
 				"          Customer_SK = customer_SK,",
-				"          Broadband_SK",
+				"          Broadband_SK,",
+				"          Service_Line_SK = Servieline_SK",
 				"     )) ~> sink7"
 			]
 		}
