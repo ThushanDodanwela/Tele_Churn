@@ -91,6 +91,9 @@
 				},
 				{
 					"name": "cast3"
+				},
+				{
+					"name": "cast4"
 				}
 			],
 			"scriptLines": [
@@ -139,7 +142,7 @@
 				"     ignoreNoFilesFound: false) ~> customer",
 				"source(output(",
 				"          Customer_ID as string,",
-				"          Churn_label as boolean",
+				"          Churn_label as string",
 				"     ),",
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
@@ -173,6 +176,10 @@
 				"          {Multiple Lines8} as boolean",
 				"     ),",
 				"     errors: true) ~> cast3",
+				"churn cast(output(",
+				"          Churn_label as boolean",
+				"     ),",
+				"     errors: true) ~> cast4",
 				"surrogateKey1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     input(",
