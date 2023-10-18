@@ -52,6 +52,13 @@
 						"type": "DatasetReference"
 					},
 					"name": "Date"
+				},
+				{
+					"dataset": {
+						"referenceName": "billingDF3",
+						"type": "DatasetReference"
+					},
+					"name": "billing"
 				}
 			],
 			"sinks": [
@@ -218,6 +225,31 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> Date",
+				"source(output(",
+				"          Customer_ID as string,",
+				"          Voice_Plan_ID as string,",
+				"          Broadband_Plan_Id as string,",
+				"          Streaming_ID as string,",
+				"          Invoice_Due_Date as string,",
+				"          Invoice_Date as string,",
+				"          No_Calls as string,",
+				"          No_Minutes as string,",
+				"          Roaming_Minutes as string,",
+				"          Total_Call_Charge as string,",
+				"          No_Extra_Channel_Subscription as string,",
+				"          Extra_Channel_Chargers as string,",
+				"          Total_Streaming_Charge as string,",
+				"          Extra_Data_GB_Used as string,",
+				"          Extra_Data_Charge as string,",
+				"          Total_Broadband_Charge as string,",
+				"          Service_Charge as string,",
+				"          Due_Charges as string,",
+				"          Paperless_Billing as string,",
+				"          Payment_Method as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> billing",
 				"broadband keyGenerate(output(Broadband_SK as long),",
 				"     startAt: 1L,",
 				"     stepValue: 1L) ~> surrogateKey1",
