@@ -24,9 +24,6 @@
 			"transformations": [
 				{
 					"name": "surrogateKey1"
-				},
-				{
-					"name": "select1"
 				}
 			],
 			"scriptLines": [
@@ -41,19 +38,9 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> broadband",
-				"select1 keyGenerate(output(Broadband_SK as long),",
+				"broadband keyGenerate(output(Broadband_SK as long),",
 				"     startAt: 1L,",
 				"     stepValue: 1L) ~> surrogateKey1",
-				"broadband select(mapColumn(",
-				"          Broadband_Plan_ID,",
-				"          Broadband_Plan_Name,",
-				"          Data_Allowance,",
-				"          {Online Security},",
-				"          {Online Backup},",
-				"          Monthly_Charge",
-				"     ),",
-				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> select1",
 				"surrogateKey1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     input(",
