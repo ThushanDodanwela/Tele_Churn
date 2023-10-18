@@ -280,7 +280,10 @@
 				"          Gender,",
 				"          Age,",
 				"          Married,",
-				"          City",
+				"          City,",
+				"          Number_of_Dependents = {Customer ID},",
+				"          Zip_Code = {Customer ID},",
+				"          Number_of_Referrals = {Customer ID}",
 				"     )) ~> sink4"
 			]
 		}
