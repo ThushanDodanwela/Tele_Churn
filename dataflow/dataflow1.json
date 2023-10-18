@@ -169,6 +169,9 @@
 				},
 				{
 					"name": "join6"
+				},
+				{
+					"name": "join7"
 				}
 			],
 			"scriptLines": [
@@ -363,6 +366,11 @@
 				"     matchType:'exact',",
 				"     ignoreSpaces: false,",
 				"     broadcast: 'auto')~> join6",
+				"join6 join(ERROR_FUNCTION('') == ERROR_FUNCTION(''),",
+				"     joinType:'inner',",
+				"     matchType:'exact',",
+				"     ignoreSpaces: false,",
+				"     broadcast: 'auto')~> join7",
 				"surrogateKey1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     input(",
@@ -537,7 +545,7 @@
 				"          invoice_due_date = Invoice_Due_Date,",
 				"          invoice_date = Invoice_Date",
 				"     )) ~> sink6",
-				"join6 sink(allowSchemaDrift: true,",
+				"join7 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     input(",
 				"          Billing_Id as integer,",
