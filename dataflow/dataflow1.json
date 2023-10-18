@@ -28,6 +28,10 @@
 					"name": "sink1"
 				},
 				{
+					"dataset": {
+						"referenceName": "AzureSqlTable3",
+						"type": "DatasetReference"
+					},
 					"name": "sink2"
 				}
 			],
@@ -88,8 +92,20 @@
 				"     )) ~> sink1",
 				"surrogateKey2 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
+				"     input(",
+				"          Voice_Plan_SK as integer,",
+				"          Voice_Plan_Name as string,",
+				"          Monthly_Charge as decimal(10,2),",
+				"          IDD_Service as boolean",
+				"     ),",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     format: 'table',",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> sink2"
+				"     skipDuplicateMapOutputs: true,",
+				"     errorHandlingOption: 'stopOnFirstError') ~> sink2"
 			]
 		}
 	}
