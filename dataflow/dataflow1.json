@@ -133,9 +133,6 @@
 					"name": "TenureinMonths"
 				},
 				{
-					"name": "surrogateKey6"
-				},
-				{
 					"name": "cast5"
 				},
 				{
@@ -264,9 +261,6 @@
 				"     ),",
 				"     errors: true) ~> cast4",
 				"surrogateKey5 derive({Tenure in Months} = ceil(monthsBetween(currentDate(), {Service_Line Activation Date},true()))) ~> TenureinMonths",
-				" keyGenerate(output(date_SK as long),",
-				"     startAt: 1L,",
-				"     stepValue: 1L) ~> surrogateKey6",
 				"Date cast(output(",
 				"          Date as integer,",
 				"          Year as integer,",
