@@ -281,9 +281,10 @@
 				"          Age,",
 				"          Married,",
 				"          City,",
-				"          Number_of_Dependents = {Customer ID},",
-				"          Zip_Code = {Customer ID},",
-				"          Number_of_Referrals = {Customer ID}",
+				"          Number_of_Dependents = {Number of Dependents},",
+				"          Zip_Code = {Zip Code},",
+				"          Number_of_Referrals = {Number of Referrals},",
+				"          Multiple_Lines = {Multiple Lines8}",
 				"     )) ~> sink4"
 			]
 		}
