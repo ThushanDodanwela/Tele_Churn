@@ -593,7 +593,12 @@
 				"          No_Extra_Channel_Subscription,",
 				"          Extra_Data_MB_Used = Extra_Data_GB_Used,",
 				"          Extra_Data_Charge,",
-				"          Total_Call_Charge",
+				"          Total_Call_Charge,",
+				"          Total_Broadband_Charge,",
+				"          Service_Charge,",
+				"          Due_Charge = Due_Charges,",
+				"          Paperless_Billing,",
+				"          Date_SK = date_SK",
 				"     )) ~> sink7"
 			]
 		}
