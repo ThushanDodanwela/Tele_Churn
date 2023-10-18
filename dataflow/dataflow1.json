@@ -348,7 +348,10 @@
 				"     skipDuplicateMapOutputs: true,",
 				"     errorHandlingOption: 'stopOnFirstError',",
 				"     mapColumn(",
-				"          Offer",
+				"          Service_Line_SK = Servieline_SK,",
+				"          Tenure_in_Months = {Tenure in Months},",
+				"          Offer,",
+				"          Contract_Type = Contract",
 				"     )) ~> sink5"
 			]
 		}
