@@ -511,7 +511,8 @@
 				"          Billing_Id = billing_SK,",
 				"          Customer_SK = customer_SK,",
 				"          Broadband_SK,",
-				"          Service_Line_SK = billing@Customer_ID",
+				"          Service_Line_SK = {Service_Line Activation Date},",
+				"          Streaming_SK = billing@Customer_ID",
 				"     )) ~> sink6"
 			]
 		}
