@@ -588,7 +588,10 @@
 				"          Voice_Plan_SK = Voice_SK,",
 				"          No_Calls,",
 				"          No_Minutes,",
-				"          Roaming_Minutes",
+				"          Roaming_Minutes,",
+				"          Total_Streaming_Charge,",
+				"          No_Extra_Channel_Subscription,",
+				"          Extra_Data_MB_Used = Extra_Data_GB_Used",
 				"     )) ~> sink7"
 			]
 		}
