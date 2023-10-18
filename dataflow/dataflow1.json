@@ -52,6 +52,9 @@
 						"type": "DatasetReference"
 					},
 					"name": "Date"
+				},
+				{
+					"name": "source1"
 				}
 			],
 			"sinks": [
@@ -221,6 +224,8 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> Date",
+				"source(allowSchemaDrift: true,",
+				"     validateSchema: false) ~> source1",
 				"broadband keyGenerate(output(Broadband_SK as long),",
 				"     startAt: 1L,",
 				"     stepValue: 1L) ~> surrogateKey1",
@@ -452,7 +457,11 @@
 				"          Month,",
 				"          Year,",
 				"          Quarter,",
-				"          Invoice_Due_Date",
+				"          Is_Christmas_Day = Is_Christmas_Month,",
+				"          Is_Vesak = Is_Vesak_Month,",
+				"          Is_Awurudu = Is_Awurudu_Month,",
+				"          invoice_due_date = Invoice_Due_Date,",
+				"          invoice_date = Invoice_Date",
 				"     )) ~> sink6"
 			]
 		}
