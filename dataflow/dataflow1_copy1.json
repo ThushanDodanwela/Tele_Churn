@@ -366,7 +366,7 @@
 				"     matchType:'exact',",
 				"     ignoreSpaces: false,",
 				"     broadcast: 'auto')~> join6",
-				"join6 filter(ERROR_FUNCTION('')) ~> filter1",
+				"join6 filter(billing_SK==billing_SK) ~> filter1",
 				"surrogateKey1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     input(",
