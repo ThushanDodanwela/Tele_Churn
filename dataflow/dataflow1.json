@@ -84,6 +84,9 @@
 				},
 				{
 					"name": "cast3"
+				},
+				{
+					"name": "AlterRow1"
 				}
 			],
 			"scriptLines": [
@@ -159,7 +162,8 @@
 				"          {Multiple Lines8} as boolean",
 				"     ),",
 				"     errors: true) ~> cast3",
-				"surrogateKey1 sink(allowSchemaDrift: true,",
+				"surrogateKey1 alterRow() ~> AlterRow1",
+				"AlterRow1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     input(",
 				"          Broadband_SK as integer,",
@@ -171,7 +175,7 @@
 				"     ),",
 				"     deletable:false,",
 				"     insertable:true,",
-				"     updateable:false,",
+				"     updateable:true,",
 				"     upsertable:false,",
 				"     format: 'table',",
 				"     skipDuplicateMapInputs: true,",
