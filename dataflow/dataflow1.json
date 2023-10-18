@@ -54,6 +54,13 @@
 						"type": "DatasetReference"
 					},
 					"name": "sink3"
+				},
+				{
+					"dataset": {
+						"referenceName": "AzureSqlTable5",
+						"type": "DatasetReference"
+					},
+					"name": "sink4"
 				}
 			],
 			"transformations": [
@@ -139,7 +146,7 @@
 				"     ),",
 				"     errors: true) ~> cast2",
 				"customer keyGenerate(output(customer_SK as long),",
-				"     startAt: 1L,",
+				"     startAt: 87649L,",
 				"     stepValue: 1L) ~> surrogateKey4",
 				"surrogateKey1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
@@ -208,7 +215,34 @@
 				"          Streaming_SK = streamline_SK,",
 				"          Streaming_Plan_Name,",
 				"          Monthly_Charge",
-				"     )) ~> sink3"
+				"     )) ~> sink3",
+				"surrogateKey4 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          Customer_SK as integer,",
+				"          Customer_Name as string,",
+				"          Gender as string,",
+				"          Age as integer,",
+				"          Married as boolean,",
+				"          Number_of_Dependents as integer,",
+				"          City as string,",
+				"          Zip_Code as string,",
+				"          Number_of_Referrals as integer,",
+				"          Multiple_Lines as boolean",
+				"     ),",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     format: 'table',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     errorHandlingOption: 'stopOnFirstError',",
+				"     mapColumn(",
+				"          Customer_SK = customer_SK,",
+				"          Gender,",
+				"          City",
+				"     )) ~> sink4"
 			]
 		}
 	}
