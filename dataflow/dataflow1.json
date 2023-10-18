@@ -75,6 +75,9 @@
 						"type": "DatasetReference"
 					},
 					"name": "sink4"
+				},
+				{
+					"name": "sink5"
 				}
 			],
 			"transformations": [
@@ -322,7 +325,11 @@
 				"          Number_of_Referrals = {Number of Referrals},",
 				"          Multiple_Lines = {Multiple Lines8},",
 				"          IsChurn = Churn_label",
-				"     )) ~> sink4"
+				"     )) ~> sink4",
+				"TenureinMonths sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> sink5"
 			]
 		}
 	}
