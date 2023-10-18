@@ -574,7 +574,9 @@
 				"          Billing_Id = billing_SK,",
 				"          Customer_SK = customer_SK,",
 				"          Broadband_SK,",
-				"          Service_Line_SK = Servieline_SK",
+				"          Service_Line_SK = Servieline_SK,",
+				"          Streaming_SK = streamline_SK,",
+				"          Voice_Plan_SK = Voice_SK",
 				"     )) ~> sink7"
 			]
 		}
