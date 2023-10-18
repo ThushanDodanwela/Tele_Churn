@@ -40,6 +40,9 @@
 						"type": "DatasetReference"
 					},
 					"name": "sink2"
+				},
+				{
+					"name": "sink3"
 				}
 			],
 			"transformations": [
@@ -51,6 +54,9 @@
 				},
 				{
 					"name": "cast1"
+				},
+				{
+					"name": "surrogateKey3"
 				}
 			],
 			"scriptLines": [
@@ -93,6 +99,9 @@
 				"          IDD_Service as binary",
 				"     ),",
 				"     errors: true) ~> cast1",
+				"streamline keyGenerate(output(streamline_SK as long),",
+				"     startAt: 1L,",
+				"     stepValue: 1L) ~> surrogateKey3",
 				"surrogateKey1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     input(",
@@ -140,7 +149,11 @@
 				"          Voice_Plan_Name,",
 				"          Monthly_Charge,",
 				"          IDD_Service",
-				"     )) ~> sink2"
+				"     )) ~> sink2",
+				"surrogateKey3 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> sink3"
 			]
 		}
 	}
