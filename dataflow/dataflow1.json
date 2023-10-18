@@ -172,6 +172,9 @@
 				},
 				{
 					"name": "join7"
+				},
+				{
+					"name": "cast6"
 				}
 			],
 			"scriptLines": [
@@ -372,6 +375,12 @@
 				"     matchType:'exact',",
 				"     ignoreSpaces: false,",
 				"     broadcast: 'auto')~> join7",
+				"join7 cast(output(",
+				"          Invoice_Due_Date as date 'MM/dd/yyyy',",
+				"          No_Calls as integer,",
+				"          Invoice_Due_Date as date 'MM/dd/yyyy'",
+				"     ),",
+				"     errors: true) ~> cast6",
 				"surrogateKey1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     input(",
@@ -546,7 +555,7 @@
 				"          invoice_due_date = Invoice_Due_Date,",
 				"          invoice_date = Invoice_Date",
 				"     )) ~> sink6",
-				"join7 sink(allowSchemaDrift: true,",
+				"cast6 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     input(",
 				"          Billing_Id as integer,",
