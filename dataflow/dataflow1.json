@@ -322,7 +322,7 @@
 				"     upsertable:false,",
 				"     truncate:true,",
 				"     format: 'table',",
-				"     preSQLs:['ALTER TABLE   DIM_Customer;\\nDROP CONSTRAINT  DIM_Customer(Customer_SK);'],",
+				"     preSQLs:['ALTER TABLE   DIM_Customer;\\nDROP CONSTRAINT  DIM_Customer(Customer_SK);','ALTER TABLE dbo.DIM_Customer NOCHECK CONSTRAINT ALL;'],",
 				"     postSQLs:['ALTER TABLE billing_fact\\nADD CONSTRAINT FK_Customer_SK\\nFOREIGN KEY (Customer_SK) REFERENCES DIM_Customer(Customer_SK);'],",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
