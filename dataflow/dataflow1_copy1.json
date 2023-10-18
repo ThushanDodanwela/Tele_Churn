@@ -1,9 +1,16 @@
 {
-	"name": "dataflow1",
+	"name": "dataflow1_copy1",
 	"properties": {
 		"type": "MappingDataFlow",
 		"typeProperties": {
 			"sources": [
+				{
+					"dataset": {
+						"referenceName": "broadbandDF",
+						"type": "DatasetReference"
+					},
+					"name": "broadband"
+				},
 				{
 					"dataset": {
 						"referenceName": "VoiceDF",
@@ -57,6 +64,13 @@
 			"sinks": [
 				{
 					"dataset": {
+						"referenceName": "AzureSqlTable2",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				},
+				{
+					"dataset": {
 						"referenceName": "AzureSqlTable3",
 						"type": "DatasetReference"
 					},
@@ -99,6 +113,9 @@
 				}
 			],
 			"transformations": [
+				{
+					"name": "surrogateKey1"
+				},
 				{
 					"name": "surrogateKey2"
 				},
@@ -155,6 +172,17 @@
 				}
 			],
 			"scriptLines": [
+				"source(output(",
+				"          Broadband_Plan_ID as string,",
+				"          Broadband_Plan_Name as string,",
+				"          Data_Allowance as integer,",
+				"          {Online Security} as boolean,",
+				"          {Online Backup} as boolean,",
+				"          Monthly_Charge as integer",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> broadband",
 				"source(output(",
 				"          Voice_Plan_ID as string,",
 				"          Voice_Plan_Name as string,",
@@ -247,6 +275,9 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> billing",
+				"broadband keyGenerate(output(Broadband_SK as long),",
+				"     startAt: 1L,",
+				"     stepValue: 1L) ~> surrogateKey1",
 				"cast1 keyGenerate(output(Voice_SK as long),",
 				"     startAt: 1L,",
 				"     stepValue: 1L) ~> surrogateKey2",
@@ -307,7 +338,7 @@
 				"billing keyGenerate(output(billing_SK as long),",
 				"     startAt: 2345L,",
 				"     stepValue: 4L) ~> surrogateKey8",
-				"surrogateKey8 join(billing@Broadband_Plan_Id == broadband@Broadband_Plan_ID,",
+				"surrogateKey8, surrogateKey1 join(billing@Broadband_Plan_Id == broadband@Broadband_Plan_ID,",
 				"     joinType:'inner',",
 				"     matchType:'exact',",
 				"     ignoreSpaces: false,",
@@ -332,6 +363,35 @@
 				"     matchType:'exact',",
 				"     ignoreSpaces: false,",
 				"     broadcast: 'auto')~> join6",
+				"surrogateKey1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          Broadband_SK as integer,",
+				"          Broadband_Plan_Name as string,",
+				"          Data_Allowance as integer,",
+				"          Online_Security as boolean,",
+				"          Online_Backup as boolean,",
+				"          Monthly_Charge as decimal(10,2),",
+				"          Is_Active as boolean",
+				"     ),",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     truncate:true,",
+				"     format: 'table',",
+				"     preSQLs:['DELETE FROM DIM_Broadband'],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     errorHandlingOption: 'stopOnFirstError',",
+				"     mapColumn(",
+				"          Broadband_SK,",
+				"          Broadband_Plan_Name,",
+				"          Data_Allowance,",
+				"          Online_Security = {Online Security},",
+				"          Online_Backup = {Online Backup},",
+				"          Monthly_Charge",
+				"     )) ~> sink1",
 				"surrogateKey2 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     input(",
