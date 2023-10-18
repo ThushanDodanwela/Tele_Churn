@@ -10,7 +10,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": "churn.csv",
+				"fileName": "telechurn.csv",
 				"folderPath": "raw-data",
 				"fileSystem": "churn-stg-data"
 			},
