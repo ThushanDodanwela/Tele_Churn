@@ -150,6 +150,9 @@
 				},
 				{
 					"name": "join2"
+				},
+				{
+					"name": "join3"
 				}
 			],
 			"scriptLines": [
@@ -319,11 +322,16 @@
 				"billing keyGenerate(output(billing_SK as long),",
 				"     startAt: 2345L,",
 				"     stepValue: 4L) ~> surrogateKey8",
-				"surrogateKey8, broadband join(ERROR_FUNCTION('') == ERROR_FUNCTION(''),",
+				"surrogateKey8, surrogateKey1 join(billing@Broadband_Plan_Id == Broadband_SK,",
 				"     joinType:'inner',",
 				"     matchType:'exact',",
 				"     ignoreSpaces: false,",
 				"     broadcast: 'auto')~> join2",
+				"join2 join(ERROR_FUNCTION('') == ERROR_FUNCTION(''),",
+				"     joinType:'inner',",
+				"     matchType:'exact',",
+				"     ignoreSpaces: false,",
+				"     broadcast: 'auto')~> join3",
 				"surrogateKey1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     input(",
