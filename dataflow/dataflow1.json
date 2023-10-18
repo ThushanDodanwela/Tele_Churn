@@ -61,6 +61,9 @@
 				},
 				{
 					"name": "surrogateKey3"
+				},
+				{
+					"name": "cast2"
 				}
 			],
 			"scriptLines": [
@@ -103,9 +106,13 @@
 				"          IDD_Service as binary",
 				"     ),",
 				"     errors: true) ~> cast1",
-				"streamline keyGenerate(output(streamline_SK as long),",
+				"cast2 keyGenerate(output(streamline_SK as long),",
 				"     startAt: 1L,",
 				"     stepValue: 1L) ~> surrogateKey3",
+				"streamline cast(output(",
+				"          Monthly_Charge as integer",
+				"     ),",
+				"     errors: true) ~> cast2",
 				"surrogateKey1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     input(",
@@ -170,7 +177,9 @@
 				"     skipDuplicateMapOutputs: true,",
 				"     errorHandlingOption: 'stopOnFirstError',",
 				"     mapColumn(",
-				"          Streaming_Plan_Name",
+				"          Streaming_SK = streamline_SK,",
+				"          Streaming_Plan_Name,",
+				"          Monthly_Charge",
 				"     )) ~> sink3"
 			]
 		}
