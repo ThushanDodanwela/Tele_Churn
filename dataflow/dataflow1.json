@@ -341,7 +341,7 @@
 				"billing keyGenerate(output(billing_SK as long),",
 				"     startAt: 2345L,",
 				"     stepValue: 4L) ~> surrogateKey8",
-				"surrogateKey8, surrogateKey1 join(billing@Broadband_Plan_Id == Broadband_SK,",
+				"surrogateKey8, surrogateKey1 join(billing@Broadband_Plan_Id == broadband@Broadband_Plan_ID,",
 				"     joinType:'inner',",
 				"     matchType:'exact',",
 				"     ignoreSpaces: false,",
