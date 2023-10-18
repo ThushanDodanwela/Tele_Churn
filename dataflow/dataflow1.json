@@ -45,6 +45,9 @@
 						"type": "DatasetReference"
 					},
 					"name": "serviceline"
+				},
+				{
+					"name": "date"
 				}
 			],
 			"sinks": [
@@ -181,6 +184,8 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> serviceline",
+				"source(allowSchemaDrift: true,",
+				"     validateSchema: false) ~> date",
 				"broadband keyGenerate(output(Broadband_SK as long),",
 				"     startAt: 1L,",
 				"     stepValue: 1L) ~> surrogateKey1",
