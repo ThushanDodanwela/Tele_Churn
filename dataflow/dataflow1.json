@@ -81,6 +81,9 @@
 				},
 				{
 					"name": "surrogateKey4"
+				},
+				{
+					"name": "cast3"
 				}
 			],
 			"scriptLines": [
@@ -145,9 +148,13 @@
 				"          Monthly_Charge as integer",
 				"     ),",
 				"     errors: true) ~> cast2",
-				"customer keyGenerate(output(customer_SK as long),",
+				"cast3 keyGenerate(output(customer_SK as long),",
 				"     startAt: 87649L,",
 				"     stepValue: 1L) ~> surrogateKey4",
+				"customer cast(output(",
+				"          {Customer ID} as string",
+				"     ),",
+				"     errors: true) ~> cast3",
 				"surrogateKey1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     input(",
@@ -241,7 +248,13 @@
 				"     mapColumn(",
 				"          Customer_SK = customer_SK,",
 				"          Gender,",
-				"          City",
+				"          Age,",
+				"          Married,",
+				"          Number_of_Dependents = {Number of Dependents},",
+				"          City,",
+				"          Zip_Code = {Zip Code},",
+				"          Number_of_Referrals = {Number of Referrals},",
+				"          Multiple_Lines = {Multiple Lines8}",
 				"     )) ~> sink4"
 			]
 		}
