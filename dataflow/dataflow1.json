@@ -280,11 +280,7 @@
 				"          Gender,",
 				"          Age,",
 				"          Married,",
-				"          Number_of_Dependents = {Number of Dependents},",
-				"          City,",
-				"          Zip_Code = {Zip Code},",
-				"          Number_of_Referrals = {Number of Referrals},",
-				"          Multiple_Lines = {Multiple Lines8}",
+				"          City",
 				"     )) ~> sink4"
 			]
 		}
