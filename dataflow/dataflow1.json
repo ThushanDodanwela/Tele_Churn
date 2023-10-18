@@ -264,7 +264,8 @@
 				"          City as string,",
 				"          Zip_Code as string,",
 				"          Number_of_Referrals as integer,",
-				"          Multiple_Lines as boolean",
+				"          Multiple_Lines as boolean,",
+				"          IsChurn as string",
 				"     ),",
 				"     deletable:false,",
 				"     insertable:true,",
@@ -274,18 +275,7 @@
 				"     format: 'table',",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
-				"     errorHandlingOption: 'stopOnFirstError',",
-				"     mapColumn(",
-				"          Customer_SK = customer_SK,",
-				"          Gender,",
-				"          Age,",
-				"          Married,",
-				"          City,",
-				"          Number_of_Dependents = {Number of Dependents},",
-				"          Zip_Code = {Zip Code},",
-				"          Number_of_Referrals = {Number of Referrals},",
-				"          Multiple_Lines = {Multiple Lines8}",
-				"     )) ~> sink4"
+				"     errorHandlingOption: 'stopOnFirstError') ~> sink4"
 			]
 		}
 	}

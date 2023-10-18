@@ -51,6 +51,10 @@
 			{
 				"name": "Multiple_Lines",
 				"type": "bit"
+			},
+			{
+				"name": "IsChurn",
+				"type": "varchar"
 			}
 		],
 		"typeProperties": {
